@@ -1,20 +1,20 @@
 
 
  SAP2000 v25.3.1 Ultimate 64-bit (Analysis Build 9960/64)
- File: C:\Users\ahmed\Desktop\...velopment\week 5\sap model\main frame model.LOG
+ File: C:\Users\Ahmed\Desktop\...velopment\week 5\sap model\main frame model.LOG
 
 
 
 
- B E G I N   A N A L Y S I S                                2025/03/15  23:38:17
+ B E G I N   A N A L Y S I S                                2025/03/17  09:38:19
 
 
  RUNNING ANALYSIS WITHIN THE GUI PROCESS
  USING THE ADVANCED SOLVER (PROVIDES LIMITED INSTABILITY INFORMATION)
 
- NUMBER OF JOINTS                          =          79
-    WITH RESTRAINTS                        =           8
- NUMBER OF FRAME/CABLE/TENDON ELEMENTS     =         109
+ NUMBER OF JOINTS                          =         102
+    WITH RESTRAINTS                        =          10
+ NUMBER OF FRAME/CABLE/TENDON ELEMENTS     =         174
  NUMBER OF LOAD PATTERNS                   =           3
  NUMBER OF ACCELERATION LOADS              =          12
  NUMBER OF LOAD CASES                      =           3
@@ -23,29 +23,29 @@
  UNITS (FORCE, LENGTH, TEMPERATURE, TIME)  = kip, in, °F, sec
  GRAVITATIONAL ACCELERATION                =  386.088583
 
- ADDRESSABLE PHYSICAL MEMORY (RAM)         =       7.741 GB
+ ADDRESSABLE PHYSICAL MEMORY (RAM)         =      15.927 GB
 
  PARALLELIZATION OF ANALYSIS OPERATIONS:
   (Env. variable SAPFIRE_NUM_THREADS not set)
- NUMBER OF THREADS: STATE (AUTOMATIC)      =           4
- NUMBER OF THREADS: STIFFNESS (AUTOMATIC)  =           4
- NUMBER OF THREADS: EVENT (AUTOMATIC)      =           4
- NUMBER OF THREADS: MOVE (AUTOMATIC)       =           4
- NUMBER OF THREADS: RESPONSE (AUTOMATIC)   =           4
- NUMBER OF THREADS: SOLVE (AUTOMATIC)      =           4
- NUMBER OF THREADS: FORM (AUTOMATIC)       =           4
+ NUMBER OF THREADS: STATE (AUTOMATIC)      =           6
+ NUMBER OF THREADS: STIFFNESS (AUTOMATIC)  =           6
+ NUMBER OF THREADS: EVENT (AUTOMATIC)      =           6
+ NUMBER OF THREADS: MOVE (AUTOMATIC)       =           6
+ NUMBER OF THREADS: RESPONSE (AUTOMATIC)   =           6
+ NUMBER OF THREADS: SOLVE (AUTOMATIC)      =           6
+ NUMBER OF THREADS: FORM (AUTOMATIC)       =           6
 
 
- E L E M E N T   F O R M A T I O N                                      23:38:17
+ E L E M E N T   F O R M A T I O N                                      09:38:19
 
 
 
- L I N E A R   E Q U A T I O N   S O L U T I O N                        23:38:17
+ L I N E A R   E Q U A T I O N   S O L U T I O N                        09:38:19
 
  FORMING STIFFNESS AT ZERO (UNSTRESSED) INITIAL CONDITIONS
 
- TOTAL NUMBER OF EQUILIBRIUM EQUATIONS     =         246
- NUMBER OF NON-ZERO STIFFNESS TERMS        =        1734
+ TOTAL NUMBER OF EQUILIBRIUM EQUATIONS     =         582
+ NUMBER OF NON-ZERO STIFFNESS TERMS        =        6501
 
  * * * W A R N I N G * * *
  THE STRUCTURE IS UNSTABLE OR ILL-CONDITIONED !!
@@ -69,7 +69,7 @@
     (NOTE: FURTHER CHECKS SHOULD BE CONSIDERED AS DEEMED NECESSARY,
      SUCH AS REVIEWING EIGEN MODES FOR MECHANISMS AND RIGID-BODY MOTION)
 
-    NUMBER OF NEGATIVE EIGENVALUES         =           3
+    NUMBER OF NEGATIVE EIGENVALUES         =           4
 
  * * * W A R N I N G * * *
  THE STRUCTURE IS UNSTABLE OR ILL-CONDITIONED !!
@@ -83,7 +83,7 @@
 
 
 
- L I N E A R   S T A T I C   C A S E S                                  23:38:17
+ L I N E A R   S T A T I C   C A S E S                                  09:38:19
 
  USING STIFFNESS AT ZERO (UNSTRESSED) INITIAL CONDITIONS
 
@@ -97,4 +97,4 @@
  CASE: WIND LOAD
 
 
- A N A L Y S I S   C O M P L E T E                          2025/03/15  23:38:17
+ A N A L Y S I S   C O M P L E T E                          2025/03/17  09:38:19
