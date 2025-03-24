@@ -6,18 +6,18 @@
 
 
 
- B E G I N   A N A L Y S I S                                2025/03/17  23:01:47
+ B E G I N   A N A L Y S I S                                2025/03/24  07:31:00
 
 
  RUNNING ANALYSIS WITHIN THE GUI PROCESS
  USING THE ADVANCED SOLVER (PROVIDES LIMITED INSTABILITY INFORMATION)
 
- NUMBER OF JOINTS                          =         136
+ NUMBER OF JOINTS                          =          98
     WITH RESTRAINTS                        =          10
- NUMBER OF FRAME/CABLE/TENDON ELEMENTS     =         210
+ NUMBER OF FRAME/CABLE/TENDON ELEMENTS     =         167
  NUMBER OF LOAD PATTERNS                   =          17
  NUMBER OF ACCELERATION LOADS              =          12
- NUMBER OF LOAD CASES                      =          17
+ NUMBER OF LOAD CASES                      =          18
  NUMBER OF MASS SOURCES                    =           1
 
  UNITS (FORCE, LENGTH, TEMPERATURE, TIME)  = kip, in, °F, sec
@@ -36,16 +36,16 @@
  NUMBER OF THREADS: FORM (AUTOMATIC)       =           6
 
 
- E L E M E N T   F O R M A T I O N                                      23:01:47
+ E L E M E N T   F O R M A T I O N                                      07:31:00
 
 
 
- L I N E A R   E Q U A T I O N   S O L U T I O N                        23:01:47
+ L I N E A R   E Q U A T I O N   S O L U T I O N                        07:31:00
 
  FORMING STIFFNESS AT ZERO (UNSTRESSED) INITIAL CONDITIONS
 
- TOTAL NUMBER OF EQUILIBRIUM EQUATIONS     =         780
- NUMBER OF NON-ZERO STIFFNESS TERMS        =        8373
+ TOTAL NUMBER OF EQUILIBRIUM EQUATIONS     =         555
+ NUMBER OF NON-ZERO STIFFNESS TERMS        =        7230
 
  * * * W A R N I N G * * *
  THE STRUCTURE IS UNSTABLE OR ILL-CONDITIONED !!
@@ -69,7 +69,7 @@
     (NOTE: FURTHER CHECKS SHOULD BE CONSIDERED AS DEEMED NECESSARY,
      SUCH AS REVIEWING EIGEN MODES FOR MECHANISMS AND RIGID-BODY MOTION)
 
-    NUMBER OF NEGATIVE EIGENVALUES         =           5
+    NUMBER OF NEGATIVE EIGENVALUES         =           1
 
  * * * W A R N I N G * * *
  THE STRUCTURE IS UNSTABLE OR ILL-CONDITIONED !!
@@ -83,12 +83,12 @@
 
 
 
- L I N E A R   S T A T I C   C A S E S                                  23:01:47
+ L I N E A R   S T A T I C   C A S E S                                  07:31:00
 
  USING STIFFNESS AT ZERO (UNSTRESSED) INITIAL CONDITIONS
 
- TOTAL NUMBER OF CASES TO SOLVE            =          17
- NUMBER OF CASES TO SOLVE PER BLOCK        =          17
+ TOTAL NUMBER OF CASES TO SOLVE            =          18
+ NUMBER OF CASES TO SOLVE PER BLOCK        =          18
 
  LINEAR STATIC CASES TO BE SOLVED:
 
@@ -109,6 +109,7 @@
  CASE: V.RIGHT.H RIGHT-CRANE 1
  CASE: V.LEFT.H RIGHT-CRANE 1
  CASE: V.LEFT.H RIGHT-CRANE 2
+ CASE: WF
 
 
- A N A L Y S I S   C O M P L E T E                          2025/03/17  23:01:47
+ A N A L Y S I S   C O M P L E T E                          2025/03/24  07:31:00
