@@ -4,6 +4,13 @@ import { Store } from '../App'
 const TabsComp = () => {
     const {data , setResult  , result , labels } = useContext(Store)
 
+    // select member 
+    const handleSelect = (e) =>{
+        if(result.members_critical_loading && result.members_critical_loading[e]){
+            setResult(prev => ({...prev , selected_member : result.members_critical_loading[e] }))
+        }
+    }
+
     useEffect(() => {
         let members = {}
 
@@ -27,7 +34,7 @@ const TabsComp = () => {
                 <ul className="my-10 flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400">
                     {
                         Object.keys(result.members).map((e , index) => (
-                            <li key={index} className="me-2">
+                            <li onClick={() => handleSelect(e)} key={index} className="me-2">
                                 <button className="inline-block px-4 py-1 text-white bg-blue-600 rounded-lg active" aria-current="page">{e} ({result.members[e]?.length})</button>
                             </li>
                         ))
