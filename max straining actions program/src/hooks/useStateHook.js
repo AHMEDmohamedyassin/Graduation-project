@@ -5,6 +5,7 @@ const useStateHook = () => {
     const [result , setResult] = useState({
       members_critical_loading : {}
     })
+
     const [labels , setLabels] = useState({
       Frame : {
         title : "Frame" , 
@@ -18,34 +19,48 @@ const useStateHook = () => {
         title : "OutputCase" , 
         index : 2
       },
+      CaseType : {
+        title : "CaseType" , 
+        index : 3
+      },
       StepType : {
         title : "StepType" , 
-        index : 3
+        index : 4
       },
       P : {
         title : "P" , 
-        index : 4
+        index : 5
       },
       V2 : {
         title : "V2" , 
-        index : 5
+        index : 6
+      },
+      V3 : {
+        title : "V3" , 
+        index : 7
+      },
+      M2 : {
+        title : "M2" , 
+        index : 8
       },
       M3 : {
         title : "M3" , 
-        index : 6
+        index : 9
       },
       FrameElem : {
         title : "FrameElem" , 
-        index : 7
+        index : 10
       },
       ElemStation : {
         title :  "ElemStation" , 
-        index : 8
+        index : 11
       }
     })
 
+    const [section , setSection] = useState()
 
-    return {data , setData , labels , setLabels , result , setResult}
+
+    return {data , setData , labels , setLabels , result , setResult , section , setSection}
 }
 
 export default useStateHook

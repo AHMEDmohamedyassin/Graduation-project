@@ -8,6 +8,7 @@ const TabsComp = () => {
     const handleSelect = (e) =>{
         if(result.members_critical_loading && result.members_critical_loading[e]){
             setResult(prev => ({...prev , selected_member : result.members_critical_loading[e] }))
+            console.log(result.members_critical_loading[e])
         }
     }
 
@@ -31,7 +32,7 @@ const TabsComp = () => {
 
         {
             result.members ? (
-                <ul className="my-10 flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400">
+                <ul className="my-10 flex overflow-auto text-sm font-medium text-center text-gray-500 dark:text-gray-400">
                     {
                         Object.keys(result.members).map((e , index) => (
                             <li onClick={() => handleSelect(e)} key={index} className="me-2">
