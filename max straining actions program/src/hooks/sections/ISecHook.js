@@ -3,7 +3,7 @@ import { Store } from '../../App'
 import useAreaHook from './useAreaHook'
 
 const ISecHook = () => {
-    const {section , setSection} = useContext(Store)
+    const {section , setSection , result , labels} = useContext(Store)
     const {areaCalc , CGCalc , inertiaCalc} = useAreaHook()
 
     // handle assign data from inputs
@@ -83,11 +83,14 @@ const ISecHook = () => {
 
         let Fltb = Math.pow( Math.pow(Fltb1 , 2) + Math.pow(Fltb2 , 2) , 0.5)
 
+        let Fball = Math.min(section.fy , section.Fltb)
+
         setSection(prev => ({
             ...prev , 
             Fltb , 
             L1_unsupported : L1 , 
-            L2_unsupported : L2
+            L2_unsupported : L2 , 
+            Fball
         }))
     }
 
@@ -111,6 +114,14 @@ const ISecHook = () => {
     }
 
 
+    // amplification factor for bending stress 
+    const AmplificationFactor_calc = () => {
+        setSection(prev => ({
+            ...prev , 
+            A1 : 1.1
+        }))
+    }
+
     // run calculations
     const run_calcs = () => {
         members_location()
@@ -120,23 +131,40 @@ const ISecHook = () => {
         local_buckling()
         ltb_calc()
         globalBuckling_calc()
+        AmplificationFactor_calc()
+    }
+
+    // check stresses on section in certain case of loading and on certain section
+    const stresses_calc = (station , member) => {
+        let N = result.selected_member[member][station][labels.P.index]
+        let M = result.selected_member[member][station][labels.M2.index]
+        
+        let Fca = - N / section.area         // applied compression
+        let Fbx = M * (section.members.top_flange.Ly / 2 + section.members.top_flange.yg - section.YG) / section.Ix
+        let compination = Fca / section.Fcr + Fbx * section.A1 / section.Fball  
+
+        // cause error 
+        // if(compination < 1) setSection(prev => ({...prev , safe : 'not safe section'}))
+
+        return compination;
     }
 
     // initialize members before start
     useEffect(() => {
         setSection({
-            Lx : 4000 ,
-            Ly : 4000 ,
+            safe : 'safe section' , 
+            Lx : 300 ,
+            Ly : 300 ,
             fy : 1.4 ,
             members : {
-                top_flange : {Lx : 200 , Ly : 20} , 
-                bottom_flange : {Lx : 200 , Ly : 20} , 
-                web : {Ly : 500 , Lx : 10} , 
+                top_flange : {Lx : 30 , Ly : 2} , 
+                bottom_flange : {Lx : 30 , Ly : 2} , 
+                web : {Ly : 50 , Lx : 1} , 
             }
         })
     } , [])
 
-    return {assign_member_data , run_calcs}
+    return {assign_member_data , run_calcs , stresses_calc}
 }
 
 export default ISecHook
