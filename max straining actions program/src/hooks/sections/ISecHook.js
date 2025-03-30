@@ -71,8 +71,8 @@ const ISecHook = () => {
         }))
     }
 
-    // lateral torsional buckling 
-    const ltb_calc = () => {
+    // lateral torsional buckling for top flange 
+    const Top_Flange_ltb_calc = () => {
         let Lx = section.members?.top_flange?.Lx ?? 0
         let Ly = section.members?.top_flange?.Ly ?? 0
         let Lu = section.Ly      // unsupported length out of plane
@@ -90,14 +90,44 @@ const ISecHook = () => {
 
         let Fltb = Math.pow( Math.pow(Fltb1 , 2) + Math.pow(Fltb2 , 2) , 0.5)
 
-        let Fball = Math.min(section.fy , section.Fltb)
+        let Fball = Math.min(section.fy , Fltb)
 
         setSection(prev => ({
             ...prev , 
-            Fltb , 
-            L1_unsupported : L1 , 
-            L2_unsupported : L2 , 
-            Fball
+            Fltb_top_flange : Fltb , 
+            L1_unsupported_top_flange : L1 , 
+            L2_unsupported_top_flange : L2 , 
+            Fball_top_flange : Fball
+        }))
+    }
+
+    // lateral torsional buckling for Lower flange
+    const Bottom_Flange_ltb_calc = () => {
+        let Lx = section.members?.bottom_flange?.Lx ?? 0
+        let Ly = section.members?.bottom_flange?.Ly ?? 0
+        let Lu = section.Ly      // unsupported length out of plane
+        let d = section.members?.web?.Ly ?? 0
+        let L1 = 20 * Lx / Math.pow(section.fy , 0.5)
+        let L2 = d ? 1280 * Lx * Ly / ( d * section.fy) : 0
+        
+        let Fltb1 = 800 * Lx * Ly / (d * Lu)
+        let rt = Math.pow((Math.pow(Lx , 3) * Ly / 12 ) / (Lx * Ly) , 0.5)
+        let Fltb21 = (0.64 - (Math.pow(Lu / rt  , 2 ) * section.fy) / 117600 ) * section.fy
+        let Fltb22 = 12000 / Math.pow(Lu / rt , 2)
+        let Fltb2 = Fltb22
+        if(Lu / rt < 188 / Math.pow(1/section.fy , 0.5))
+            Fltb2 = Fltb21
+
+        let Fltb = Math.pow( Math.pow(Fltb1 , 2) + Math.pow(Fltb2 , 2) , 0.5)
+
+        let Fball = Math.min(section.fy , Fltb)
+
+        setSection(prev => ({
+            ...prev , 
+            Fltb_bottom_flange : Fltb , 
+            L1_unsupported_bottom_flange : L1 , 
+            L2_unsupported_bottom_flange : L2 , 
+            Fball_bottom_flange : Fball
         }))
     }
 
@@ -136,22 +166,71 @@ const ISecHook = () => {
         CGCalc()
         inertiaCalc()
         local_buckling()
-        ltb_calc()
+        Top_Flange_ltb_calc()
+        Bottom_Flange_ltb_calc()
         globalBuckling_calc()
         AmplificationFactor_calc()
     }
 
     // check stresses on section in certain case of loading and on certain section
-    const stresses_calc = (station , member) => {
+    // const stresses_calc = (station , member) => {
+    //     let N = result.selected_member[member][station][labels.P.index]
+    //     let M = result.selected_member[member][station][labels.M2.index]
+        
+    //     let Fca = - N / section.area         // applied compression
+    //     let Fbx = M * (section.members.top_flange.Ly / 2 + section.members.top_flange.yg - section.YG) / section.Ix
+    //     let combination = Fca / section.Fcr + Fbx * section.A1 / section.Fball  
+
+    //     if(section.type == "beam") {
+    //         combination = Fca / section.Fcr + Fbx / section.Fball  
+    //     }
+
+    //     return combination;
+    // }
+
+    // check stresses for top flange
+    const top_flange_stresses_calc = (station , member) => {
         let N = result.selected_member[member][station][labels.P.index]
         let M = result.selected_member[member][station][labels.M2.index]
         
-        let Fca = - N / section.area         // applied compression
-        let Fbx = M * (section.members.top_flange.Ly / 2 + section.members.top_flange.yg - section.YG) / section.Ix
-        let combination = Fca / section.Fcr + Fbx * section.A1 / section.Fball  
+        let Fa = N / section.area         // applied axial stress
+        let Fbx = -M * (section.members.top_flange.Ly / 2 + section.members.top_flange.yg - section.YG) / section.Ix  // applied bending stress
+        
+        let combination = 0
+        
+        if(section.type == 'beam'){
+            combination = (Fa + Fbx) / section.fy
+    
+            if(combination < 0){
+                combination = Math.abs((Fa + Fbx) / section.Fltb_top_flange)
+            }
 
-        if(section.type == "beam") {
-            combination = Fca / section.Fcr + Fbx / section.Fball  
+        }else{
+            combination = Fa / (Fa < 0 ? section.Fcr : section.fy) + (Fbx * section.A1) / section.Fball_top_flange
+        }
+
+        return combination;
+    }
+
+    // check stresses for bottom flange
+    const bottom_flange_stresses_calc = (station , member) => {
+        let N = result.selected_member[member][station][labels.P.index]
+        let M = result.selected_member[member][station][labels.M2.index]
+        
+        let Fa = N / section.area         // applied axial stress
+        let Fbx = M * (section.YG - section.members.bottom_flange.yg) / section.Ix  // applied bending stress
+        
+        let combination = 0
+        
+        if(section.type == 'beam'){
+            combination = (Fa + Fbx) / section.fy
+    
+            if(combination < 0){
+                combination = Math.abs((Fa + Fbx) / section.Fltb_bottom_flange)
+            }
+
+        }else{
+            combination = Fa / (Fa < 0 ? section.Fcr : section.fy) + (Fbx * section.A1) / section.Fball_bottom_flange
         }
 
         return combination;
@@ -181,7 +260,7 @@ const ISecHook = () => {
         })
     } , [])
 
-    return {assign_member_data , run_calcs , stresses_calc , shear_stress_calc}
+    return {assign_member_data , run_calcs , bottom_flange_stresses_calc , top_flange_stresses_calc , shear_stress_calc}
 }
 
 export default ISecHook

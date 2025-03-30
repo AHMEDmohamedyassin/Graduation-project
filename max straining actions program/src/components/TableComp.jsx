@@ -5,7 +5,7 @@ import ISecHook from '../hooks/sections/ISecHook'
 
 const TableComp = () => {
     const {data , setResult  , result , labels , section , setSection} = useContext(Store)
-    const {stresses_calc , shear_stress_calc} = ISecHook()
+    const { shear_stress_calc} = ISecHook()
 
     useEffect(() => {
         let safe = section?.safe ?? true;
@@ -15,7 +15,8 @@ const TableComp = () => {
         result.selected_member && (
             Object.keys(result.selected_member).map((e) => {
                 Object.keys(result.selected_member[e])?.map((station , key) => {
-                    let compination = stresses_calc(station , e)
+                    // let compination = stresses_calc(station , e)
+                    let compination = 0
                     let shear_check = shear_stress_calc(station , e)
                     if(compination > 1 || shear_check > 1)
                         safe = false
@@ -44,7 +45,10 @@ const TableComp = () => {
                             straining action type
                         </th>
                         <th scope="col" className="px-6 py-3">
-                            interaction equation result
+                            top flange interaction
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            bottom flange interaction
                         </th>
                         <th scope="col" className="px-6 py-3">
                             shear stress / allowable shear
