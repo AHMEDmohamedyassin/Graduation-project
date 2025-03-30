@@ -1,14 +1,17 @@
 import React from 'react'
 import * as XLSX from "xlsx";
+import useStateHook from './useStateHook';
 
-const useHandleFileUpload = (setData) => {
+const useHandleFileUpload = ({setData , loading , setLoading}) => {
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
 
     if (file) {
       const reader = new FileReader();
-  
+      
+      setLoading(true) 
+
       reader.onload = (e) => {
         const binaryStr = e.target.result;
         const workbook = XLSX.read(binaryStr, { type: "binary" });
@@ -20,6 +23,7 @@ const useHandleFileUpload = (setData) => {
         
         
         setData(jsonData);
+        setLoading(false)
       };
       
       reader.readAsBinaryString(file);

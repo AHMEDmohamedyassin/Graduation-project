@@ -21,8 +21,32 @@ const SectionPropComp = () => {
                     </tr>
                 </thead>
                 <tbody>
+                    <tr class="border-b border-gray-200 dark:border-gray-700">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                            safe
+                        </th>
+                        <td class="px-6 py-4">
+                            {section?.safe ? "safe" : "not safe"}
+                        </td>
+                    </tr>
+                    <tr class="border-b border-gray-200 dark:border-gray-700">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                            max_interaction
+                        </th>
+                        <td class="px-6 py-4">
+                            {section?.max_interaction ??0}
+                        </td>
+                    </tr>
+                    <tr class="border-b border-gray-200 dark:border-gray-700">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                            max_shear
+                        </th>
+                        <td class="px-6 py-4">
+                            {section?.max_shear ?? 0}
+                        </td>
+                    </tr>
                     {
-                        Object.keys(section ?? {})?.filter(e => e != 'members')?.map((e , index) => (
+                        Object.keys(section ?? {})?.filter(e => !(['members' , 'safe' , 'max_interaction' , 'max_shear'].includes(e)) )?.map((e , index) => (
                             <tr key={index} class="border-b border-gray-200 dark:border-gray-700">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                                     {e}

@@ -5,11 +5,10 @@ import ISecComp from './ISecComp'
 
 const SectionComp = () => {
   return (
-    <div className='flex items-start justify-between gap-10'>
+    <div className='grid lg:grid-cols-3 grid-cols-2 items-start gap-10'>
         <SectionPropComp/>
-        
         <ISecComp/>
-
+        <img src='/ibeam.png'/>
     </div>
   )
 }

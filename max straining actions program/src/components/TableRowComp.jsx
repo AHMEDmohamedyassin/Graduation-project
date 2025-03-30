@@ -3,8 +3,8 @@ import { Store } from '../App'
 import ISecHook from '../hooks/sections/ISecHook'
 
 const TableRowComp = ({e}) => {
-    const {result , labels } = useContext(Store)
-    const {stresses_calc} = ISecHook()
+    const {result , labels , setSection} = useContext(Store)
+    const {stresses_calc , shear_stress_calc} = ISecHook()
 
   return (
     <>
@@ -17,13 +17,20 @@ const TableRowComp = ({e}) => {
                         {e}
                     </th>
                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {stresses_calc(station , e)}
+                        {parseFloat(stresses_calc(station , e)).toFixed(3)}
+                    </th>
+                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {parseFloat(shear_stress_calc(station , e)).toFixed(3)}
                     </th>
                     {
                         // loop through table columns names
                         Object.values(labels)?.map((label , index) => (
                             <td key={index} title={label.title} className="px-6 py-4 w-max">
-                                {result.selected_member[e][station][label.index]}
+                                {
+                                    Number.isFinite(parseFloat(result.selected_member[e][station][label.index])) ? 
+                                        parseFloat(result.selected_member[e][station][label.index]).toFixed(3)
+                                    : result.selected_member[e][station][label.index]
+                                }
                             </td>
                         ))
                     }

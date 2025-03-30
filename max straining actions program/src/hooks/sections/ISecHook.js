@@ -10,7 +10,6 @@ const ISecHook = () => {
     const assign_member_data = (member , label , value) => {
         setSection(prev => ({
             ...prev , 
-            fy : 1.4 ,
             members : {
                 ...(prev?.members ?? {}) , 
                 [member] : {
@@ -40,25 +39,33 @@ const ISecHook = () => {
         let bottom = section.members.bottom_flange
         let top = section.members.top_flange
         let web = section.members.web
+
+        let lb_pass_bottom_flange = ((bottom.Lx / 2 ) / top.Ly) < 21 / Math.pow(section.fy , 0.5)
+        let lb_pass_top_flange = ((top.Lx / 2 ) / top.Ly) < (21 / Math.pow(section.fy , 0.5))
+        let lb_pass_web = (web.Ly / web.Lx) < (64 / Math.pow(section.fy , 0.5))
+        let lb_pass_web_col = (web.Ly / web.Lx) < (58 / Math.pow(section.fy , 0.5))
+
         setSection(prev => ({
             ...prev , 
+            safe : (lb_pass_bottom_flange && lb_pass_top_flange && lb_pass_web) ,
+            local_buckling : (lb_pass_bottom_flange && lb_pass_top_flange && lb_pass_web) ? "pass" : "not pass" ,
             members : {
                 ...prev.members , 
                 bottom_flange : {
                     ...bottom , 
                     lb_value : (bottom.Lx / 2 ) / top.Ly , 
-                    lb_pass : ((bottom.Lx / 2 ) / top.Ly) < 21 / Math.pow(section.fy , 0.5)
+                    lb_pass : lb_pass_bottom_flange
                 },
                 top_flange : {
                     ...top , 
                     lb_value : (top.Lx / 2 ) / top.Ly , 
-                    lb_pass : ((top.Lx / 2 ) / top.Ly) < (21 / Math.pow(section.fy , 0.5))
+                    lb_pass : lb_pass_top_flange
                 },
                 web : {
                     ...web , 
                     lb_value : web.Ly / web.Lx , 
-                    lb_pass : (web.Ly / web.Lx) < (64 / Math.pow(section.fy , 0.5)) ,
-                    lb_pass_col : (web.Ly / web.Lx) < (58 / Math.pow(section.fy , 0.5))
+                    lb_pass :  lb_pass_web,
+                    lb_pass_col : lb_pass_web_col
                 }
             }
         }))
@@ -99,7 +106,7 @@ const ISecHook = () => {
     const globalBuckling_calc = () => {
         let slenderness_x = section.Lx / section.ix
         let slenderness_y = section.Ly / section.iy
-        let slenderness = Math.min(slenderness_x , slenderness_y)
+        let slenderness = Math.max(slenderness_x , slenderness_y)
         let Fcr = 7500 / Math.pow(slenderness , 2)
         if(slenderness < 100)
             Fcr = section.fy - 0.000065 * Math.pow(slenderness , 2)
@@ -141,30 +148,40 @@ const ISecHook = () => {
         
         let Fca = - N / section.area         // applied compression
         let Fbx = M * (section.members.top_flange.Ly / 2 + section.members.top_flange.yg - section.YG) / section.Ix
-        let compination = Fca / section.Fcr + Fbx * section.A1 / section.Fball  
+        let combination = Fca / section.Fcr + Fbx * section.A1 / section.Fball  
 
-        // cause error 
-        // if(compination < 1) setSection(prev => ({...prev , safe : 'not safe section'}))
+        if(section.type == "beam") {
+            combination = Fca / section.Fcr + Fbx / section.Fball  
+        }
 
-        return compination;
+        return combination;
+    }
+
+    // shear stress calculation
+    const shear_stress_calc = (station , member) => {
+        let Q = result.selected_member[member][station][labels.V2.index]
+        let web_area = section.members.web.Lx * section.members.web.Ly
+
+        return Math.abs(web_area ? ((Q / web_area ) / ((section.fy * 0.35) / 0.58)) : 0)
     }
 
     // initialize members before start
     useEffect(() => {
         setSection({
-            safe : 'safe section' , 
+            safe : true ,
+            type : "beam" ,  
             Lx : 300 ,
             Ly : 300 ,
             fy : 1.4 ,
             members : {
-                top_flange : {Lx : 30 , Ly : 2} , 
-                bottom_flange : {Lx : 30 , Ly : 2} , 
-                web : {Ly : 50 , Lx : 1} , 
+                top_flange : {Lx : 30 , Ly : 2.25} , 
+                bottom_flange : {Lx : 30 , Ly : 2.25} , 
+                web : {Ly : 31.5 , Lx : 1.25} , 
             }
         })
     } , [])
 
-    return {assign_member_data , run_calcs , stresses_calc}
+    return {assign_member_data , run_calcs , stresses_calc , shear_stress_calc}
 }
 
 export default ISecHook

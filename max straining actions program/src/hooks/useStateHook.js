@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 const useStateHook = () => {
+    const [loading , setLoading] = useState(false)
     const [data, setData] = useState([]);
     const [result , setResult] = useState({
       members_critical_loading : {}
@@ -39,28 +40,32 @@ const useStateHook = () => {
         title : "V3" , 
         index : 7
       },
-      M2 : {
+      T : {
         title : "M2" , 
         index : 8
       },
+      M2 : {
+        title : "M2" , 
+        index : 9
+      },
       M3 : {
         title : "M3" , 
-        index : 9
+        index : 10
       },
       FrameElem : {
         title : "FrameElem" , 
-        index : 10
+        index : 11
       },
       ElemStation : {
         title :  "ElemStation" , 
-        index : 11
+        index : 12
       }
     })
 
     const [section , setSection] = useState()
 
 
-    return {data , setData , labels , setLabels , result , setResult , section , setSection}
+    return {data , setData , labels , setLabels , result , setResult , section , setSection , loading , setLoading}
 }
 
 export default useStateHook

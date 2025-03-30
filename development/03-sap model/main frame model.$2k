@@ -2712,24 +2712,24 @@ TABLE:  "FRAME RELEASE ASSIGNMENTS 1 - GENERAL"
 TABLE:  "FRAME SECTION ASSIGNMENTS"
    Frame=1   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
    Frame=2   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=3   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=4   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=5   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
+   Frame=3   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=4   AutoSelect=N.A.   AnalSect="2< 80 * 8"   MatProp=Default
+   Frame=5   AutoSelect=N.A.   AnalSect="2< 80 * 8"   MatProp=Default
    Frame=6   AutoSelect=angles   AnalSect="< 90 * 11"   MatProp=Default
    Frame=7   AutoSelect=angles   AnalSect="< 80 * 10"   MatProp=Default
    Frame=8   AutoSelect=angles   AnalSect="< 80 * 10"   MatProp=Default
    Frame=9   AutoSelect=angles   AnalSect="< 80 * 10"   MatProp=Default
    Frame=10   AutoSelect=angles   AnalSect="< 80 * 10"   MatProp=Default
    Frame=12   AutoSelect=angles   AnalSect="< 90 * 11"   MatProp=Default
-   Frame=13   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
+   Frame=13   AutoSelect=N.A.   AnalSect="HEB 500"   MatProp=Default
    Frame=16   AutoSelect=angles   AnalSect="< 90 * 11"   MatProp=Default
    Frame=17   AutoSelect=angles   AnalSect="< 90 * 11"   MatProp=Default
    Frame=19   AutoSelect=angles   AnalSect="< 90 * 11"   MatProp=Default
    Frame=20   AutoSelect=angles   AnalSect="< 90 * 11"   MatProp=Default
    Frame=21   AutoSelect=angles   AnalSect="< 90 * 11"   MatProp=Default
-   Frame=22   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=23   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=27   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
+   Frame=22   AutoSelect=N.A.   AnalSect="HEB 500"   MatProp=Default
+   Frame=23   AutoSelect=N.A.   AnalSect="HEB 500"   MatProp=Default
+   Frame=27   AutoSelect=N.A.   AnalSect="HEB 500"   MatProp=Default
    Frame=28   AutoSelect=angles   AnalSect="< 90 * 11"   MatProp=Default
    Frame=29   AutoSelect=angles   AnalSect="< 90 * 11"   MatProp=Default
    Frame=30   AutoSelect=angles   AnalSect="< 90 * 11"   MatProp=Default
@@ -2740,10 +2740,10 @@ TABLE:  "FRAME SECTION ASSIGNMENTS"
    Frame=35   AutoSelect=angles   AnalSect="< 80 * 10"   MatProp=Default
    Frame=36   AutoSelect=angles   AnalSect="< 80 * 10"   MatProp=Default
    Frame=37   AutoSelect=angles   AnalSect="< 80 * 10"   MatProp=Default
-   Frame=38   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=40   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=43   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=44   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
+   Frame=38   AutoSelect=N.A.   AnalSect="2< 80 * 8"   MatProp=Default
+   Frame=40   AutoSelect=N.A.   AnalSect="2< 80 * 8"   MatProp=Default
+   Frame=43   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=44   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
    Frame=47   AutoSelect=angles   AnalSect="< 55 * 6"   MatProp=Default
    Frame=56   AutoSelect=angles   AnalSect="< 90 * 11"   MatProp=Default
    Frame=57   AutoSelect=angles   AnalSect="< 90 * 11"   MatProp=Default
@@ -2756,10 +2756,10 @@ TABLE:  "FRAME SECTION ASSIGNMENTS"
    Frame=64   AutoSelect=angles   AnalSect="< 80 * 10"   MatProp=Default
    Frame=76   AutoSelect="back to back angles"   AnalSect="2< 65 * 7"   MatProp=Default
    Frame=82   AutoSelect="back to back angles"   AnalSect="2< 70 * 9"   MatProp=Default
-   Frame=83   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
+   Frame=83   AutoSelect=N.A.   AnalSect="2< 80 * 8"   MatProp=Default
    Frame=84   AutoSelect="back to back angles"   AnalSect="2< 65 * 7"   MatProp=Default
    Frame=85   AutoSelect="back to back angles"   AnalSect="2< 65 * 7"   MatProp=Default
-   Frame=87   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
+   Frame=87   AutoSelect=N.A.   AnalSect="2< 80 * 8"   MatProp=Default
    Frame=88   AutoSelect=angles   AnalSect="< 90 * 11"   MatProp=Default
    Frame=89   AutoSelect=angles   AnalSect="< 90 * 11"   MatProp=Default
    Frame=90   AutoSelect=angles   AnalSect="< 90 * 11"   MatProp=Default
@@ -2770,39 +2770,39 @@ TABLE:  "FRAME SECTION ASSIGNMENTS"
    Frame=95   AutoSelect=angles   AnalSect="< 80 * 10"   MatProp=Default
    Frame=96   AutoSelect=angles   AnalSect="< 80 * 10"   MatProp=Default
    Frame=97   AutoSelect="back to back angles"   AnalSect="2< 70 * 9"   MatProp=Default
-   Frame=98   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=101   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=108   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=109   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=113   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=114   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=119   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=120   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=121   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=122   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=123   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=124   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=125   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=126   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=127   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=128   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=129   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=130   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=131   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=132   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=133   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=134   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=135   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=136   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=137   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=138   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=139   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=140   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=141   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=142   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=143   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=144   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=145   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
+   Frame=98   AutoSelect=N.A.   AnalSect="2< 80 * 8"   MatProp=Default
+   Frame=101   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=108   AutoSelect=N.A.   AnalSect="HEB 500"   MatProp=Default
+   Frame=109   AutoSelect=N.A.   AnalSect="HEB 500"   MatProp=Default
+   Frame=113   AutoSelect=N.A.   AnalSect="HEB 500"   MatProp=Default
+   Frame=114   AutoSelect=N.A.   AnalSect="HEB 500"   MatProp=Default
+   Frame=119   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=120   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=121   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=122   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=123   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=124   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=125   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=126   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=127   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=128   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=129   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=130   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=131   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=132   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=133   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=134   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=135   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=136   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=137   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=138   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=139   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=140   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=141   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=142   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=143   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=144   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
+   Frame=145   AutoSelect=N.A.   AnalSect="HEB 300"   MatProp=Default
    Frame=149   AutoSelect="back to back angles"   AnalSect="2< 70 * 9"   MatProp=Default
    Frame=150   AutoSelect="back to back angles"   AnalSect="2< 80 * 8"   MatProp=Default
    Frame=151   AutoSelect="back to back angles"   AnalSect="2< 75  * 10"   MatProp=Default
@@ -2839,19 +2839,19 @@ TABLE:  "FRAME SECTION ASSIGNMENTS"
    Frame=185   AutoSelect="back to back angles"   AnalSect="2< 65 * 7"   MatProp=Default
    Frame=186   AutoSelect="back to back angles"   AnalSect="2< 65 * 7"   MatProp=Default
    Frame=187   AutoSelect="back to back angles"   AnalSect="2< 65 * 7"   MatProp=Default
-   Frame=192   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=193   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=195   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=196   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=197   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=198   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=199   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=200   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=201   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=203   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=204   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=205   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=206   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
+   Frame=192   AutoSelect=N.A.   AnalSect="2< 80 * 8"   MatProp=Default
+   Frame=193   AutoSelect=N.A.   AnalSect="2< 80 * 8"   MatProp=Default
+   Frame=195   AutoSelect=N.A.   AnalSect="2< 80 * 8"   MatProp=Default
+   Frame=196   AutoSelect=N.A.   AnalSect="2< 80 * 8"   MatProp=Default
+   Frame=197   AutoSelect=N.A.   AnalSect="2< 80 * 8"   MatProp=Default
+   Frame=198   AutoSelect=N.A.   AnalSect="2< 80 * 8"   MatProp=Default
+   Frame=199   AutoSelect=N.A.   AnalSect="2< 80 * 8"   MatProp=Default
+   Frame=200   AutoSelect=N.A.   AnalSect="2< 80 * 8"   MatProp=Default
+   Frame=201   AutoSelect=N.A.   AnalSect="2< 80 * 8"   MatProp=Default
+   Frame=203   AutoSelect=N.A.   AnalSect="2< 80 * 8"   MatProp=Default
+   Frame=204   AutoSelect=N.A.   AnalSect="2< 80 * 8"   MatProp=Default
+   Frame=205   AutoSelect=N.A.   AnalSect="2< 80 * 8"   MatProp=Default
+   Frame=206   AutoSelect=N.A.   AnalSect="2< 80 * 8"   MatProp=Default
  
 TABLE:  "FRAME SECTION PROPERTIES 01 - GENERAL"
    SectionName="< 50 * 7"   Material="Steel 52"   Shape=Angle   t3=1.96850393700787   t2=1.96850393700787   tf=0.275590551181102   tw=0.275590551181102   FilletRadius=0   Area=1.00905201810404   TorsConst=0.0241326204178851 _
@@ -2911,6 +2911,14 @@ TABLE:  "FRAME SECTION PROPERTIES 01 - GENERAL"
    SectionName=FSEC1   Material=A992Fy50   Shape="I/Wide Flange"   t3=12   t2=5   tf=0.38   tw=0.25   t2b=5   tfb=0.38   FilletRadius=0   Area=6.61   TorsConst=0.231870449633333   I33=157.902961333333   I22=7.93130208333333   I23=0   AS2=3 _
         AS3=3.16666666666667   S33Top=26.3171602222222   S33Bot=26.3171602222222   S22Left=3.17252083333333   S22Right=3.17252083333333   Z33=29.9741   Z22=4.925625   R33=4.88758595009503   R22=1.09539692122433   CGOffset3=0   CGOffset2=0 _
         EccV2=0   EccV3=0   Cw=267.235791666667   Color=Gray8Dark   FromFile=No   AMod=1   A2Mod=1   A3Mod=1   JMod=1   I2Mod=1   I3Mod=1   MMod=1   WMod=1   GUID=6758e2d2-8f48-47b2-8c86-653546917788   Notes="Added 3/15/2025 9:46:53 PM"
+   SectionName="HEB 300"   Material="Steel 52"   Shape="I/Wide Flange"   t3=11.8110236220472   t2=7.8740157480315   tf=0.78740157480315   tw=0.393700787401575   t2b=7.8740157480315   tfb=0.78740157480315   FilletRadius=0 _
+        Area=16.4300328600657   TorsConst=2.60440050092492   I33=412.542933503417   I22=64.1189773089861   I23=0   AS2=4.6500093000186   AS3=10.3333540000413   S33Top=69.8572700732453   S33Bot=69.8572700732453   S22Left=16.2862202364825 _
+        S22Right=16.2862202364825   Z33=78.6596061381099   Z22=24.8061519745087   R33=5.01089566598462   R22=1.97548655102239   CGOffset3=0   CGOffset2=0   EccV2=0   EccV3=0   Cw=1946.35701145205   Color=Green   FromFile=No   AMod=1 _
+        A2Mod=1   A3Mod=1   JMod=1   I2Mod=1   I3Mod=1   MMod=1   WMod=1   GUID=ae2e4538-b68b-4f4c-a0ec-e3bc7ca2c972   Notes="Added 3/30/2025 1:07:37 AM"
+   SectionName="HEB 500"   Material="Steel 52"   Shape="I/Wide Flange"   t3=19.6850393700787   t2=11.8110236220472   tf=0.885826771653543   tw=0.492125984251969   t2b=11.8110236220472   tfb=0.885826771653543   FilletRadius=0 _
+        Area=29.740684481369   TorsConst=5.91397104485792   I33=2085.88731066329   I22=243.432018242073   I23=0   AS2=9.68751937503875   AS3=17.4375348750698   S33Top=211.926150763391   S33Bot=211.926150763391   S22Left=41.2211550889911 _
+        S22Right=41.2211550889911   Z33=236.166657126621   Z22=62.8711425976002   R33=8.37471316394615   R22=2.8609704363845   CGOffset3=0   CGOffset2=0   EccV2=0   EccV3=0   Cw=21492.1316749443   Color=Gray8Dark   FromFile=No   AMod=1 _
+        A2Mod=1   A3Mod=1   JMod=1   I2Mod=1   I3Mod=1   MMod=1   WMod=1   GUID=04911456-2bcf-4116-9044-c8c601bdbcb8   Notes="Added 3/30/2025 1:04:40 AM"
  
 TABLE:  "FRAME SECTION PROPERTIES 04 - AUTO SELECT"
    ListName=angles   SectionName="< 50 * 7"
@@ -2939,6 +2947,8 @@ TABLE:  "FRAME SECTION PROPERTIES 13 - TIME DEPENDENT"
    SectionName="2< 75  * 10"   TypeSize=Auto   AutoSFSize=1
    SectionName="2< 80 * 8"   TypeSize=Auto   AutoSFSize=1
    SectionName=FSEC1   TypeSize=Auto   AutoSFSize=1
+   SectionName="HEB 300"   TypeSize=Auto   AutoSFSize=1
+   SectionName="HEB 500"   TypeSize=Auto   AutoSFSize=1
  
 TABLE:  "FUNCTION - PLOT FUNCTIONS"
    PlotFunc="Input Energy"   Type=Energy   Component=Input   Mode=All

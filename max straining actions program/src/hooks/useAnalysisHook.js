@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import useSubAnalysisEqu from './useSubAnalysisEqu'
 
-const useAnalysisHook = ({data , labels , result , setResult}) => {
+const useAnalysisHook = ({data , labels , result , setResult , setLoading}) => {
     const {handleMaxMinCalcs} = useSubAnalysisEqu()
 
     const members_critical_loading = {
@@ -35,6 +35,8 @@ const useAnalysisHook = ({data , labels , result , setResult}) => {
      * handle analysis
      */
     const handleAnalysis = () => {
+        setLoading(true)
+
         data.map(row => {
             let frame = row[labels.Frame.index]
             if(!parseInt(frame)) return ;
@@ -74,6 +76,8 @@ const useAnalysisHook = ({data , labels , result , setResult}) => {
         })
 
         console.log(result.members_critical_loading)
+
+        setLoading(false)
     }
 
     return {handleAnalysis}
