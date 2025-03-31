@@ -24,6 +24,7 @@ const useHandleFileUpload = ({setData , loading , setLoading}) => {
         
         setData(jsonData);
         setLoading(false)
+
       };
       
       reader.readAsBinaryString(file);

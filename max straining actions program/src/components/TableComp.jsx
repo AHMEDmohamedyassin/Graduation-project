@@ -5,23 +5,34 @@ import ISecHook from '../hooks/sections/ISecHook'
 
 const TableComp = () => {
     const {data , setResult  , result , labels , section , setSection} = useContext(Store)
-    const { shear_stress_calc} = ISecHook()
+    const { shear_stress_calc , top_flange_stresses_calc , bottom_flange_stresses_calc} = ISecHook()
 
     useEffect(() => {
-        let safe = section?.safe ?? true;
-        let max_interaction = 0;
+        let safe = true;
+        let max_top_stress = 0;
+        let min_top_stress = 0;
+        let max_bottom_stress = 0;
+        let min_bottom_stress = 0;
         let max_shear = 0;
 
         result.selected_member && (
             Object.keys(result.selected_member).map((e) => {
                 Object.keys(result.selected_member[e])?.map((station , key) => {
-                    // let compination = stresses_calc(station , e)
-                    let compination = 0
+                    let top_stress = top_flange_stresses_calc(station , e);
+                    let bottom_stress = bottom_flange_stresses_calc(station , e);
                     let shear_check = shear_stress_calc(station , e)
-                    if(compination > 1 || shear_check > 1)
-                        safe = false
-                    if(compination > max_interaction)
-                        max_interaction = compination
+
+                    // assign max and min stresses for top and bottom flanges
+                    if(top_stress < min_top_stress)
+                        min_top_stress = top_stress
+                    if(top_stress > max_top_stress)
+                        max_top_stress = top_stress
+                    if(bottom_stress > max_bottom_stress)
+                        max_bottom_stress = bottom_stress
+                    if(bottom_stress < min_bottom_stress)
+                        min_bottom_stress = bottom_stress
+
+                    // assign max shear
                     if(shear_check > max_shear)
                         max_shear = shear_check
                 })
@@ -29,7 +40,10 @@ const TableComp = () => {
             })
         )
 
-        setSection(prev => ({...prev , safe , max_interaction , max_shear}))
+        if(!section?.lb_safe || Math.max(Math.abs(min_bottom_stress) ,Math.abs(min_top_stress) , max_top_stress , max_bottom_stress) > 1)
+            safe = false
+
+        setSection(prev => ({...prev , safe , max_top_stress , min_top_stress , max_bottom_stress , min_bottom_stress , max_shear}))
 
 
     } , [result.selected_member])

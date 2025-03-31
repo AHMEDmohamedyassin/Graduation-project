@@ -7,7 +7,7 @@ const TabsComp = () => {
     // select member 
     const handleSelect = (e) =>{
         if(result.members_critical_loading && result.members_critical_loading[e]){
-            setResult(prev => ({...prev , selected_member : result.members_critical_loading[e] }))
+            setResult(prev => ({...prev , selected_member : result.members_critical_loading[e] , selected_label : e }))
             console.log(result.members_critical_loading[e])
         }
     }
@@ -36,7 +36,7 @@ const TabsComp = () => {
                     {
                         Object.keys(result.members).map((e , index) => (
                             <li onClick={() => handleSelect(e)} key={index} className="me-2">
-                                <button className="inline-block px-4 py-1 text-white bg-blue-600 rounded-lg active" aria-current="page">{e} ({result.members[e]?.length})</button>
+                                <button className={`inline-block px-4 py-1 text-white ${result.selected_label == e ? "bg-blue-300" : "bg-blue-600"} rounded-lg active`} aria-current="page">{e} ({result.members[e]?.length})</button>
                             </li>
                         ))
                     }

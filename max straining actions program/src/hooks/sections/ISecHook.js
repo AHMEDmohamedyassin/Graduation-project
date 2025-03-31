@@ -47,7 +47,7 @@ const ISecHook = () => {
 
         setSection(prev => ({
             ...prev , 
-            safe : (lb_pass_bottom_flange && lb_pass_top_flange && lb_pass_web) ,
+            lb_safe : (lb_pass_bottom_flange && lb_pass_top_flange && lb_pass_web) ,
             local_buckling : (lb_pass_bottom_flange && lb_pass_top_flange && lb_pass_web) ? "pass" : "not pass" ,
             members : {
                 ...prev.members , 
@@ -172,42 +172,21 @@ const ISecHook = () => {
         AmplificationFactor_calc()
     }
 
-    // check stresses on section in certain case of loading and on certain section
-    // const stresses_calc = (station , member) => {
-    //     let N = result.selected_member[member][station][labels.P.index]
-    //     let M = result.selected_member[member][station][labels.M2.index]
-        
-    //     let Fca = - N / section.area         // applied compression
-    //     let Fbx = M * (section.members.top_flange.Ly / 2 + section.members.top_flange.yg - section.YG) / section.Ix
-    //     let combination = Fca / section.Fcr + Fbx * section.A1 / section.Fball  
-
-    //     if(section.type == "beam") {
-    //         combination = Fca / section.Fcr + Fbx / section.Fball  
-    //     }
-
-    //     return combination;
-    // }
-
     // check stresses for top flange
     const top_flange_stresses_calc = (station , member) => {
         let N = result.selected_member[member][station][labels.P.index]
-        let M = result.selected_member[member][station][labels.M2.index]
+        let M = result.selected_member[member][station][labels.M3.index]
         
         let Fa = N / section.area         // applied axial stress
-        let Fbx = -M * (section.members.top_flange.Ly / 2 + section.members.top_flange.yg - section.YG) / section.Ix  // applied bending stress
+        let Fbx = M * (section.members.top_flange.Ly / 2 + section.members.top_flange.yg - section.YG) / section.Ix  // applied bending stress
         
         let combination = 0
         
-        if(section.type == 'beam'){
-            combination = (Fa + Fbx) / section.fy
-    
-            if(combination < 0){
-                combination = Math.abs((Fa + Fbx) / section.Fltb_top_flange)
-            }
-
-        }else{
-            combination = Fa / (Fa < 0 ? section.Fcr : section.fy) + (Fbx * section.A1) / section.Fball_top_flange
-        }
+        if(section.type == 'beam')
+            combination = Fa / (Fa < 0 ? section.Fltb_top_flange : section.fy) + Fbx / (Fbx < 0 ? section.Fltb_top_flange : section.fy) 
+        else
+            combination = Fa / (Fa < 0 ? section.Fcr : section.fy) + (Fbx * (Fbx < 0 ? section.A1 : 1) ) / (Fbx < 0 ? section.Fball_top_flange : section.fy)
+        
 
         return combination;
     }
@@ -215,23 +194,17 @@ const ISecHook = () => {
     // check stresses for bottom flange
     const bottom_flange_stresses_calc = (station , member) => {
         let N = result.selected_member[member][station][labels.P.index]
-        let M = result.selected_member[member][station][labels.M2.index]
+        let M = result.selected_member[member][station][labels.M3.index]
         
         let Fa = N / section.area         // applied axial stress
-        let Fbx = M * (section.YG - section.members.bottom_flange.yg) / section.Ix  // applied bending stress
+        let Fbx = -M * (section.YG - section.members.bottom_flange.yg) / section.Ix  // applied bending stress
         
         let combination = 0
         
-        if(section.type == 'beam'){
-            combination = (Fa + Fbx) / section.fy
-    
-            if(combination < 0){
-                combination = Math.abs((Fa + Fbx) / section.Fltb_bottom_flange)
-            }
-
-        }else{
-            combination = Fa / (Fa < 0 ? section.Fcr : section.fy) + (Fbx * section.A1) / section.Fball_bottom_flange
-        }
+        if(section.type == 'beam')
+            combination = Fa / (Fa < 0 ? section.Fltb_bottom_flange : section.fy) + Fbx / (Fbx < 0 ? section.Fltb_bottom_flange : section.fy) 
+        else
+            combination = Fa / (Fa < 0 ? section.Fcr : section.fy) + (Fbx * (Fbx < 0 ? section.A1 : 1) ) / (Fbx < 0 ? section.Fltb_bottom_flange : section.fy)
 
         return combination;
     }
