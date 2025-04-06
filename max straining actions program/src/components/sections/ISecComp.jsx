@@ -12,10 +12,17 @@ const ISecComp = () => {
     } , [section])
 
   return (
-        <div className='grid grid-cols-2 gap-4'>
-            <div class=" w-full">
+        <div className='grid grid-cols-2 gap-4 items-end'>
+            {/* factored fy */}
+            {/* <div class=" w-full">
                 <label for="number-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">factored fy (t/cm2):</label>
-                <input value={section?.fy ?? 0} onChange={e => setSection(prev => ({...prev , fy : e.target.value}))} type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="90210" required />
+                <input disabled value={section?.fy ?? 0} onChange={e => setSection(prev => ({...prev , fy : e.target.value}))} type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 disabled:bg-gray-200" placeholder="90210" required />
+            </div> */}
+
+            {/* yield stress */}
+            <div class=" w-full">
+                <label for="number-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">fy (t/cm2):</label>
+                <input value={section?.fy_unfactored ?? 0} onChange={e => setSection(prev => ({...prev , fy_unfactored : e.target.value , fy : e.target.value * 0.58 }))} type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="90210" required />
             </div>
 
             {/* chooose element type  */}
@@ -62,7 +69,7 @@ const ISecComp = () => {
                 <input value={section?.members?.web?.Ly ?? 0} onChange={e => assign_member_data('web' , 'Ly' , e.target.value)} type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="90210" required />
             </div>
 
-            <button onClick={run_calcs} type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">calc</button>
+            <button onClick={run_calcs} type="button" class="h-fit text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">calc</button>
         </div>
   )
 }

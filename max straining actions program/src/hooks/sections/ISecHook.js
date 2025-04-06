@@ -77,15 +77,15 @@ const ISecHook = () => {
         let Ly = section.members?.top_flange?.Ly ?? 0
         let Lu = section.Ly      // unsupported length out of plane
         let d = section.members?.web?.Ly ?? 0
-        let L1 = 20 * Lx / Math.pow(section.fy , 0.5)
-        let L2 = d ? 1280 * Lx * Ly / ( d * section.fy) : 0
+        let L1 = 20 * Lx / Math.pow(section.fy_unfactored , 0.5)
+        let L2 = d ? 1280 * Lx * Ly / ( d * section.fy_unfactored) : 0
         
         let Fltb1 = 800 * Lx * Ly / (d * Lu)
         let rt = Math.pow((Math.pow(Lx , 3) * Ly / 12 ) / (Lx * Ly) , 0.5)
         let Fltb21 = (0.64 - (Math.pow(Lu / rt  , 2 ) * section.fy) / 117600 ) * section.fy
         let Fltb22 = 12000 / Math.pow(Lu / rt , 2)
         let Fltb2 = Fltb22
-        if(Lu / rt < 188 / Math.pow(1/section.fy , 0.5))
+        if(Lu / rt < 188 / Math.pow(1/section.fy_unfactored , 0.5))
             Fltb2 = Fltb21
 
         let Fltb = Math.pow( Math.pow(Fltb1 , 2) + Math.pow(Fltb2 , 2) , 0.5)
@@ -107,15 +107,15 @@ const ISecHook = () => {
         let Ly = section.members?.bottom_flange?.Ly ?? 0
         let Lu = section.Ly      // unsupported length out of plane
         let d = section.members?.web?.Ly ?? 0
-        let L1 = 20 * Lx / Math.pow(section.fy , 0.5)
-        let L2 = d ? 1280 * Lx * Ly / ( d * section.fy) : 0
+        let L1 = 20 * Lx / Math.pow(section.fy_unfactored , 0.5)
+        let L2 = d ? 1280 * Lx * Ly / ( d * section.fy_unfactored) : 0
         
         let Fltb1 = 800 * Lx * Ly / (d * Lu)
         let rt = Math.pow((Math.pow(Lx , 3) * Ly / 12 ) / (Lx * Ly) , 0.5)
         let Fltb21 = (0.64 - (Math.pow(Lu / rt  , 2 ) * section.fy) / 117600 ) * section.fy
         let Fltb22 = 12000 / Math.pow(Lu / rt , 2)
         let Fltb2 = Fltb22
-        if(Lu / rt < 188 / Math.pow(1/section.fy , 0.5))
+        if(Lu / rt < 188 / Math.pow(1/section.fy_unfactored , 0.5))
             Fltb2 = Fltb21
 
         let Fltb = Math.pow( Math.pow(Fltb1 , 2) + Math.pow(Fltb2 , 2) , 0.5)
@@ -155,7 +155,7 @@ const ISecHook = () => {
     const AmplificationFactor_calc = () => {
         setSection(prev => ({
             ...prev , 
-            A1 : 1.1
+            A1 : 1.05
         }))
     }
 
@@ -180,11 +180,14 @@ const ISecHook = () => {
         let Fa = N / section.area         // applied axial stress
         let Fbx = M * (section.members.top_flange.Ly / 2 + section.members.top_flange.yg - section.YG) / section.Ix  // applied bending stress
         
+        // console.log(Fa , Fbx);
+        
         let combination = 0
         
-        if(section.type == 'beam')
-            combination = Fa / (Fa < 0 ? section.Fltb_top_flange : section.fy) + Fbx / (Fbx < 0 ? section.Fltb_top_flange : section.fy) 
-        else
+        // if(section.type == 'beam')
+        //     // combination = Fa / (Fa < 0 ? section.Fltb_top_flange : section.fy) + Fbx / (Fbx < 0 ? section.Fltb_top_flange : section.fy) 
+        //     combination = Fa / (Fa < 0 ? section.Fball_top_flange : section.fy) + Fbx / (Fbx < 0 ? section.Fball_top_flange : section.fy) 
+        // else
             combination = Fa / (Fa < 0 ? section.Fcr : section.fy) + (Fbx * (Fbx < 0 ? section.A1 : 1) ) / (Fbx < 0 ? section.Fball_top_flange : section.fy)
         
 
@@ -197,14 +200,18 @@ const ISecHook = () => {
         let M = result.selected_member[member][station][labels.M3.index]
         
         let Fa = N / section.area         // applied axial stress
-        let Fbx = -M * (section.YG - section.members.bottom_flange.yg) / section.Ix  // applied bending stress
+        let Fbx = -M * (section.YG ) / section.Ix  // applied bending stress
         
+        // console.log(Fa , Fbx);
+
         let combination = 0
         
-        if(section.type == 'beam')
-            combination = Fa / (Fa < 0 ? section.Fltb_bottom_flange : section.fy) + Fbx / (Fbx < 0 ? section.Fltb_bottom_flange : section.fy) 
-        else
-            combination = Fa / (Fa < 0 ? section.Fcr : section.fy) + (Fbx * (Fbx < 0 ? section.A1 : 1) ) / (Fbx < 0 ? section.Fltb_bottom_flange : section.fy)
+        // if(section.type == 'beam')
+        //     // combination = Fa / (Fa < 0 ? section.Fltb_bottom_flange : section.fy) + Fbx / (Fbx < 0 ? section.Fltb_bottom_flange : section.fy) 
+        //     combination = Fa / (Fa < 0 ? section.Fball_bottom_flange : section.fy) + Fbx / (Fbx < 0 ? section.Fltb_bottom_flange : section.fy) 
+        // else
+            // combination = Fa / (Fa < 0 ? section.Fcr : section.fy) + (Fbx * (Fbx < 0 ? section.A1 : 1) ) / (Fbx < 0 ? section.Fltb_bottom_flange : section.fy)
+            combination = Fa / (Fa < 0 ? section.Fcr : section.fy) + (Fbx * (Fbx < 0 ? section.A1 : 1) ) / (Fbx < 0 ? section.Fball_bottom_flange : section.fy)
 
         return combination;
     }
@@ -222,13 +229,14 @@ const ISecHook = () => {
         setSection({
             safe : true ,
             type : "beam" ,  
-            Lx : 300 ,
+            Lx : 220 ,
             Ly : 300 ,
-            fy : 1.4 ,
+            fy : 1.4 ,   // factored fy
+            fy_unfactored : 2.4,
             members : {
-                top_flange : {Lx : 30 , Ly : 2.25} , 
-                bottom_flange : {Lx : 30 , Ly : 2.25} , 
-                web : {Ly : 31.5 , Lx : 1.25} , 
+                top_flange : {Lx : 30 , Ly : 1.65} , 
+                bottom_flange : {Lx : 30 , Ly : 1.65} , 
+                web : {Ly : 29.7 , Lx : 0.95} , 
             }
         })
     } , [])
