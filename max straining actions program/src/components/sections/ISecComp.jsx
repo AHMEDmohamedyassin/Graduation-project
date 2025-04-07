@@ -8,8 +8,17 @@ const ISecComp = () => {
     const {assign_member_data , run_calcs} = ISecHook()
 
     useEffect(() => {
+        if(section)
+            localStorage.setItem('isection' , JSON.stringify(section))
         console.log(section);
     } , [section])
+
+    useEffect(() => {
+        try{
+            if(localStorage.getItem('isection'))
+                setSection(JSON.parse(localStorage.getItem('isection')))
+        }catch(e){}
+    } , [])
 
   return (
         <div className='grid grid-cols-2 gap-4 items-end'>

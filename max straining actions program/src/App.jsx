@@ -22,8 +22,10 @@ function App() {
   } , [data])
 
   useEffect(() => {
-    if(localStorage.getItem('result'))
-      setResult(JSON.parse(localStorage.getItem('result')))
+    try{
+      if(localStorage.getItem('result'))
+        setResult(JSON.parse(localStorage.getItem('result')))
+    }catch(e){}
   } , [])
   useEffect(() => {
     localStorage.setItem('result' , JSON.stringify(result))

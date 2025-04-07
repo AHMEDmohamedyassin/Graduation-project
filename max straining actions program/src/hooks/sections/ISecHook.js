@@ -41,26 +41,26 @@ const ISecHook = () => {
         let web = section.members.web
 
         // compact
-        let lb_compact_pass_bottom_flange = ((bottom.Lx / 2 ) / top.Ly) < 15.3 / Math.pow(section.fy_unfactored , 0.5)
+        let lb_compact_pass_bottom_flange = ((bottom.Lx / 2 ) / bottom.Ly) < 15.3 / Math.pow(section.fy_unfactored , 0.5)
         let lb_compact_pass_top_flange = ((top.Lx / 2 ) / top.Ly) < (15.3 / Math.pow(section.fy_unfactored , 0.5))
         let lb_compact_pass_web = (web.Ly / web.Lx) < (127 / Math.pow(section.fy_unfactored , 0.5))
         let lb_compact_pass_web_col = (web.Ly / web.Lx) < (58 / Math.pow(section.fy_unfactored , 0.5))
 
         // non_compact
-        let lb_pass_bottom_flange = ((bottom.Lx / 2 ) / top.Ly) < 21 / Math.pow(section.fy_unfactored , 0.5)
+        let lb_pass_bottom_flange = ((bottom.Lx / 2 ) / bottom.Ly) < 21 / Math.pow(section.fy_unfactored , 0.5)
         let lb_pass_top_flange = ((top.Lx / 2 ) / top.Ly) < (21 / Math.pow(section.fy_unfactored , 0.5))
         let lb_pass_web = (web.Ly / web.Lx) < (190 / Math.pow(section.fy_unfactored , 0.5))
         let lb_pass_web_col = (web.Ly / web.Lx) < (64 / Math.pow(section.fy_unfactored , 0.5))
 
         setSection(prev => ({
             ...prev , 
-            lb_safe : (lb_pass_bottom_flange && lb_pass_top_flange && lb_pass_web) ,
-            local_buckling : (lb_pass_bottom_flange && lb_pass_top_flange && lb_pass_web) ? "pass" : "not pass" ,
+            lb_safe : (lb_pass_bottom_flange && lb_pass_top_flange && (section.type == "beam" ? lb_pass_web : lb_pass_web_col)) ,
+            local_buckling : (lb_pass_bottom_flange && lb_pass_top_flange && (section.type == "beam" ? lb_pass_web : lb_pass_web_col) ) ? "pass" : "not pass" ,
             members : {
                 ...prev.members , 
                 bottom_flange : {
                     ...bottom , 
-                    lb_value : (bottom.Lx / 2 ) / top.Ly , 
+                    lb_value : (bottom.Lx / 2 ) / bottom.Ly , 
                     lb_pass : lb_pass_bottom_flange , 
                     compactness : lb_compact_pass_bottom_flange && lb_pass_bottom_flange
                 },
@@ -319,20 +319,20 @@ const ISecHook = () => {
 
     // initialize members before start
     useEffect(() => {
-        setSection({
-            safe : true ,
-            type : "beam" ,  
-            Lx : 220 ,
-            Ly : 300 ,
-            fy : 1.4 ,   // factored fy
-            fy_unfactored : 2.4,
-            A1 : 1,
-            members : {
-                top_flange : {Lx : 30 , Ly : 1.65} , 
-                bottom_flange : {Lx : 30 , Ly : 1.65} , 
-                web : {Ly : 29.7 , Lx : 0.95} , 
-            }
-        })
+        // setSection({
+        //     safe : true ,
+        //     type : "beam" ,  
+        //     Lx : 220 ,
+        //     Ly : 300 ,
+        //     fy : 1.4 ,   // factored fy
+        //     fy_unfactored : 2.4,
+        //     A1 : 1,
+        //     members : {
+        //         top_flange : {Lx : 30 , Ly : 1.65} , 
+        //         bottom_flange : {Lx : 30 , Ly : 1.65} , 
+        //         web : {Ly : 29.7 , Lx : 0.95} , 
+        //     }
+        // })
     } , [])
 
     return {assign_member_data , run_calcs , bottom_flange_stresses_calc , top_flange_stresses_calc , shear_stress_calc}

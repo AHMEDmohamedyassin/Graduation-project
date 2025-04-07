@@ -2,6 +2,7 @@ import React from 'react'
 import SectionPropComp from './SectionPropComp'
 import AngleSecComp from './AngleSecComp'
 import ISecComp from './ISecComp'
+import SubMembersDataComp from './SubMembersDataComp'
 
 const SectionComp = () => {
   return (
@@ -10,6 +11,9 @@ const SectionComp = () => {
         <ISecComp/>
         <div className='lg:col-span-2'>
           <SectionPropComp/>
+        </div>
+        <div className='lg:col-span-4'>
+          <SubMembersDataComp/>
         </div>
     </div>
   )
