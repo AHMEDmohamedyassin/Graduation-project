@@ -40,10 +40,17 @@ const ISecHook = () => {
         let top = section.members.top_flange
         let web = section.members.web
 
-        let lb_pass_bottom_flange = ((bottom.Lx / 2 ) / top.Ly) < 21 / Math.pow(section.fy , 0.5)
-        let lb_pass_top_flange = ((top.Lx / 2 ) / top.Ly) < (21 / Math.pow(section.fy , 0.5))
-        let lb_pass_web = (web.Ly / web.Lx) < (64 / Math.pow(section.fy , 0.5))
-        let lb_pass_web_col = (web.Ly / web.Lx) < (58 / Math.pow(section.fy , 0.5))
+        // compact
+        let lb_compact_pass_bottom_flange = ((bottom.Lx / 2 ) / top.Ly) < 15.3 / Math.pow(section.fy_unfactored , 0.5)
+        let lb_compact_pass_top_flange = ((top.Lx / 2 ) / top.Ly) < (15.3 / Math.pow(section.fy_unfactored , 0.5))
+        let lb_compact_pass_web = (web.Ly / web.Lx) < (127 / Math.pow(section.fy_unfactored , 0.5))
+        let lb_compact_pass_web_col = (web.Ly / web.Lx) < (58 / Math.pow(section.fy_unfactored , 0.5))
+
+        // non_compact
+        let lb_pass_bottom_flange = ((bottom.Lx / 2 ) / top.Ly) < 21 / Math.pow(section.fy_unfactored , 0.5)
+        let lb_pass_top_flange = ((top.Lx / 2 ) / top.Ly) < (21 / Math.pow(section.fy_unfactored , 0.5))
+        let lb_pass_web = (web.Ly / web.Lx) < (190 / Math.pow(section.fy_unfactored , 0.5))
+        let lb_pass_web_col = (web.Ly / web.Lx) < (64 / Math.pow(section.fy_unfactored , 0.5))
 
         setSection(prev => ({
             ...prev , 
@@ -54,20 +61,37 @@ const ISecHook = () => {
                 bottom_flange : {
                     ...bottom , 
                     lb_value : (bottom.Lx / 2 ) / top.Ly , 
-                    lb_pass : lb_pass_bottom_flange
+                    lb_pass : lb_pass_bottom_flange , 
+                    compactness : lb_compact_pass_bottom_flange && lb_pass_bottom_flange
                 },
                 top_flange : {
                     ...top , 
                     lb_value : (top.Lx / 2 ) / top.Ly , 
-                    lb_pass : lb_pass_top_flange
+                    lb_pass : lb_pass_top_flange , 
+                    compactness : lb_compact_pass_top_flange && lb_pass_top_flange
                 },
                 web : {
                     ...web , 
                     lb_value : web.Ly / web.Lx , 
-                    lb_pass :  lb_pass_web,
-                    lb_pass_col : lb_pass_web_col
+                    lb_pass :  section.type == "beam" ? lb_pass_web : lb_pass_web_col,
+                    compactness : section.type == "beam" ? (lb_compact_pass_web && lb_pass_web) : (lb_compact_pass_web_col && lb_pass_web_col)
                 }
             }
+        }))
+    }
+
+    // top flange unsupported length calculation
+    const Top_flange_unsupported_length = () => {
+        let Lx = section.members?.top_flange?.Lx ?? 0
+        let Ly = section.members?.top_flange?.Ly ?? 0
+        let d = section.members?.web?.Ly ?? 0    // web depth
+        let L1 = 20 * Lx / Math.pow(section.fy_unfactored , 0.5)
+        let L2 = d ? 1280 * Lx * Ly / ( d * section.fy_unfactored) : 0
+                
+        setSection(prev => ({
+            ...prev , 
+            L1_unsupported_top_flange : L1 , 
+            L2_unsupported_top_flange : L2 
         }))
     }
 
@@ -77,12 +101,15 @@ const ISecHook = () => {
         let Ly = section.members?.top_flange?.Ly ?? 0
         let Lu = section.Ly      // unsupported length out of plane
         let d = section.members?.web?.Ly ?? 0
-        let L1 = 20 * Lx / Math.pow(section.fy_unfactored , 0.5)
-        let L2 = d ? 1280 * Lx * Ly / ( d * section.fy_unfactored) : 0
+        let fy = section.fy       // factored yield stress
+
+        // check if section is compact to increase yield stress
+        if(section.top_compact)
+            fy = section.fy_unfactored * 0.64
         
         let Fltb1 = 800 * Lx * Ly / (d * Lu)
         let rt = Math.pow((Math.pow(Lx , 3) * Ly / 12 ) / (Lx * Ly) , 0.5)
-        let Fltb21 = (0.64 - (Math.pow(Lu / rt  , 2 ) * section.fy) / 117600 ) * section.fy
+        let Fltb21 = (0.64 - (Math.pow(Lu / rt  , 2 ) * fy) / 117600 ) * fy
         let Fltb22 = 12000 / Math.pow(Lu / rt , 2)
         let Fltb2 = Fltb22
         if(Lu / rt < 188 / Math.pow(1/section.fy_unfactored , 0.5))
@@ -90,16 +117,29 @@ const ISecHook = () => {
 
         let Fltb = Math.pow( Math.pow(Fltb1 , 2) + Math.pow(Fltb2 , 2) , 0.5)
 
-        let Fball = Math.min(section.fy , Fltb)
+        let Fball = Math.min(fy , Fltb)
 
         setSection(prev => ({
             ...prev , 
             Fltb_top_flange : Fltb , 
-            L1_unsupported_top_flange : L1 , 
-            L2_unsupported_top_flange : L2 , 
             Fball_top_flange : Fball
         }))
     }
+
+    // bottom flange unsupported length calculation 
+    const Bottom_flange_unsupported_length = () => {
+        let Lx = section.members?.bottom_flange?.Lx ?? 0
+        let Ly = section.members?.bottom_flange?.Ly ?? 0
+        let d = section.members?.web?.Ly ?? 0
+        let L1 = 20 * Lx / Math.pow(section.fy_unfactored , 0.5)
+        let L2 = d ? 1280 * Lx * Ly / ( d * section.fy_unfactored) : 0
+        
+        setSection(prev => ({
+            ...prev , 
+            L1_unsupported_bottom_flange : L1 , 
+            L2_unsupported_bottom_flange : L2 , 
+        }))
+    } 
 
     // lateral torsional buckling for Lower flange
     const Bottom_Flange_ltb_calc = () => {
@@ -107,12 +147,14 @@ const ISecHook = () => {
         let Ly = section.members?.bottom_flange?.Ly ?? 0
         let Lu = section.Ly      // unsupported length out of plane
         let d = section.members?.web?.Ly ?? 0
-        let L1 = 20 * Lx / Math.pow(section.fy_unfactored , 0.5)
-        let L2 = d ? 1280 * Lx * Ly / ( d * section.fy_unfactored) : 0
+        let fy = section.fy
+
+        if(section.bottom_compact)
+            fy = section.fy_unfactored * 0.64
         
         let Fltb1 = 800 * Lx * Ly / (d * Lu)
         let rt = Math.pow((Math.pow(Lx , 3) * Ly / 12 ) / (Lx * Ly) , 0.5)
-        let Fltb21 = (0.64 - (Math.pow(Lu / rt  , 2 ) * section.fy) / 117600 ) * section.fy
+        let Fltb21 = (0.64 - (Math.pow(Lu / rt  , 2 ) * fy) / 117600 ) * fy
         let Fltb22 = 12000 / Math.pow(Lu / rt , 2)
         let Fltb2 = Fltb22
         if(Lu / rt < 188 / Math.pow(1/section.fy_unfactored , 0.5))
@@ -120,13 +162,11 @@ const ISecHook = () => {
 
         let Fltb = Math.pow( Math.pow(Fltb1 , 2) + Math.pow(Fltb2 , 2) , 0.5)
 
-        let Fball = Math.min(section.fy , Fltb)
+        let Fball = Math.min(fy , Fltb)
 
         setSection(prev => ({
             ...prev , 
             Fltb_bottom_flange : Fltb , 
-            L1_unsupported_bottom_flange : L1 , 
-            L2_unsupported_bottom_flange : L2 , 
             Fball_bottom_flange : Fball
         }))
     }
@@ -150,14 +190,48 @@ const ISecHook = () => {
         }))
     }
 
+    // check compactness , section type
+    const CheckSectionType = () => {
+        let bottom_compact = true // compact
+        let top_compact = true // compact
 
-    // amplification factor for bending stress 
-    const AmplificationFactor_calc = () => {
+        // check compactness on bottom flange
+        // check if unsupported Length Ly is less than L1 , L2
+        // check if member is passing local buckling
+        if(
+            section.Ly < section.L1_unsupported_bottom_flange 
+            && section.Ly < section.L2_unsupported_bottom_flange
+            && section.members.bottom_flange.compactness
+            && section.members.top_flange.compactness
+            && section.members.web.compactness
+        ){
+            bottom_compact = true
+        }
+        else 
+            bottom_compact = false
+
+
+        // check compactness on top flange
+        // check if unsupported Length Ly is less than L1 , L2
+        // check if member is passing local buckling
+        if(
+            section.Ly < section.L1_unsupported_top_flange 
+            && section.Ly < section.L2_unsupported_top_flange
+            && section.members.bottom_flange.compactness
+            && section.members.top_flange.compactness
+            && section.members.web.compactness
+        ){
+            top_compact = true
+        }
+        else 
+            top_compact = false
+
         setSection(prev => ({
             ...prev , 
-            A1 : 1.05
+            top_compact , 
+            bottom_compact
         }))
-    }
+    } 
 
     // run calculations
     const run_calcs = () => {
@@ -166,10 +240,19 @@ const ISecHook = () => {
         CGCalc()
         inertiaCalc()
         local_buckling()
+        // unsupported length calculations
+        Top_flange_unsupported_length()
+        Bottom_flange_unsupported_length()
+        // check section type in case of +ve and -ve moments
+        CheckSectionType()
+
         Top_Flange_ltb_calc()
         Bottom_Flange_ltb_calc()
         globalBuckling_calc()
-        AmplificationFactor_calc()
+
+
+        console.log('calcs');
+        
     }
 
     // check stresses for top flange
@@ -180,6 +263,11 @@ const ISecHook = () => {
         let Fa = N / section.area         // applied axial stress
         let Fbx = M * (section.members.top_flange.Ly / 2 + section.members.top_flange.yg - section.YG) / section.Ix  // applied bending stress
         
+        // bending yield stress if the top flange is subjected to tension , the top flange tension resistance depends on bottom compactness and unsupported length
+        let fy_bending = section.fy
+        if(section.bottom_compact)
+            fy_bending = section.fy_unfactored * 0.64
+
         // console.log(Fa , Fbx);
         
         let combination = 0
@@ -188,7 +276,7 @@ const ISecHook = () => {
         //     // combination = Fa / (Fa < 0 ? section.Fltb_top_flange : section.fy) + Fbx / (Fbx < 0 ? section.Fltb_top_flange : section.fy) 
         //     combination = Fa / (Fa < 0 ? section.Fball_top_flange : section.fy) + Fbx / (Fbx < 0 ? section.Fball_top_flange : section.fy) 
         // else
-            combination = Fa / (Fa < 0 ? section.Fcr : section.fy) + (Fbx * (Fbx < 0 ? section.A1 : 1) ) / (Fbx < 0 ? section.Fball_top_flange : section.fy)
+            combination = Fa / (Fa < 0 ? section.Fcr : section.fy) + (Fbx * (Fbx < 0 ? section.A1 : 1) ) / (Fbx < 0 ? section.Fball_top_flange : fy_bending)
         
 
         return combination;
@@ -202,6 +290,11 @@ const ISecHook = () => {
         let Fa = N / section.area         // applied axial stress
         let Fbx = -M * (section.YG ) / section.Ix  // applied bending stress
         
+        // bending yield stress if the bottom flange is subjected to tension , the bottom flange tension resistance depends on top compactness and unsupported length
+        let fy_bending = section.fy
+        if(section.top_compact)
+            fy_bending = section.fy_unfactored * 0.64
+
         // console.log(Fa , Fbx);
 
         let combination = 0
@@ -211,7 +304,7 @@ const ISecHook = () => {
         //     combination = Fa / (Fa < 0 ? section.Fball_bottom_flange : section.fy) + Fbx / (Fbx < 0 ? section.Fltb_bottom_flange : section.fy) 
         // else
             // combination = Fa / (Fa < 0 ? section.Fcr : section.fy) + (Fbx * (Fbx < 0 ? section.A1 : 1) ) / (Fbx < 0 ? section.Fltb_bottom_flange : section.fy)
-            combination = Fa / (Fa < 0 ? section.Fcr : section.fy) + (Fbx * (Fbx < 0 ? section.A1 : 1) ) / (Fbx < 0 ? section.Fball_bottom_flange : section.fy)
+            combination = Fa / (Fa < 0 ? section.Fcr : section.fy) + (Fbx * (Fbx < 0 ? section.A1 : 1) ) / (Fbx < 0 ? section.Fball_bottom_flange : fy_bending)
 
         return combination;
     }
@@ -233,6 +326,7 @@ const ISecHook = () => {
             Ly : 300 ,
             fy : 1.4 ,   // factored fy
             fy_unfactored : 2.4,
+            A1 : 1,
             members : {
                 top_flange : {Lx : 30 , Ly : 1.65} , 
                 bottom_flange : {Lx : 30 , Ly : 1.65} , 

@@ -39,7 +39,7 @@ const SectionPropComp = () => {
                     </tr>
                     <tr class="border-b border-gray-200 dark:border-gray-700">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                            max top flange tension compression
+                            max top flange compression stress
                         </th>
                         <td class={`px-6 py-4 font-bold ${Math.abs(section?.min_top_stress) > 1 ? "text-red-500" : ""}`}>
                             {section?.min_top_stress ??0}
@@ -69,8 +69,32 @@ const SectionPropComp = () => {
                             {section?.max_shear ?? 0}
                         </td>
                     </tr>
+                    <tr class="border-b border-gray-200 dark:border-gray-700">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                            local buckling safety 
+                        </th>
+                        <td class={`px-6 py-4 font-bold ${!section?.lb_safe ? "text-red-500" : ""}`}>
+                            {section?.lb_safe ? "safe" : "not safe"}
+                        </td>
+                    </tr>
+                    <tr class="border-b border-gray-200 dark:border-gray-700">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                            top flange compression compactness
+                        </th>
+                        <td class={`px-6 py-4 font-bold ${section?.top_compact ? "text-blue-500" : "text-yellow-500"}`}>
+                            {section?.top_compact ? "compact" : "non compact"}
+                        </td>
+                    </tr>
+                    <tr class="border-b border-gray-200 dark:border-gray-700">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                            bottom flange compression compactness
+                        </th>
+                        <td class={`px-6 py-4 font-bold ${section?.bottom_compact ? "text-blue-500" : "text-yellow-500"}`}>
+                            {section?.bottom_compact ? "compact" : "non compact"}
+                        </td>
+                    </tr>
                     {
-                        Object.keys(section ?? {})?.filter(e => !(['members' , 'safe'  , 'max_top_stress' , 'min_top_stress' , 'max_bottom_stress' , 'min_bottom_stress' , 'max_shear'].includes(e)) )?.map((e , index) => (
+                        Object.keys(section ?? {})?.filter(e => !(['members' , 'safe'  , 'max_top_stress' , 'min_top_stress' , 'max_bottom_stress' , 'min_bottom_stress' , 'max_shear' , 'top_compact' , 'bottom_compact' , 'lb_safe' , 'type'].includes(e)) )?.map((e , index) => (
                             <tr key={index} class="border-b border-gray-200 dark:border-gray-700">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                                     {e}

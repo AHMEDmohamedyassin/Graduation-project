@@ -6,7 +6,7 @@
 
 
 
- B E G I N   A N A L Y S I S                                2025/03/30  01:12:37
+ B E G I N   A N A L Y S I S                                2025/04/07  11:35:53
 
 
  RUNNING ANALYSIS WITHIN THE GUI PROCESS
@@ -36,11 +36,11 @@
  NUMBER OF THREADS: FORM (AUTOMATIC)       =           6
 
 
- E L E M E N T   F O R M A T I O N                                      01:12:37
+ E L E M E N T   F O R M A T I O N                                      11:35:53
 
 
 
- L I N E A R   E Q U A T I O N   S O L U T I O N                        01:12:37
+ L I N E A R   E Q U A T I O N   S O L U T I O N                        11:35:53
 
  FORMING STIFFNESS AT ZERO (UNSTRESSED) INITIAL CONDITIONS
 
@@ -83,7 +83,7 @@
 
 
 
- L I N E A R   S T A T I C   C A S E S                                  01:12:37
+ L I N E A R   S T A T I C   C A S E S                                  11:35:53
 
  USING STIFFNESS AT ZERO (UNSTRESSED) INITIAL CONDITIONS
 
@@ -112,4 +112,4 @@
  CASE: WF
 
 
- A N A L Y S I S   C O M P L E T E                          2025/03/30  01:12:37
+ A N A L Y S I S   C O M P L E T E                          2025/04/07  11:35:53
