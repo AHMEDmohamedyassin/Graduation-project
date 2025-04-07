@@ -21,7 +21,14 @@ function App() {
     handleAnalysis()
   } , [data])
 
-  
+  useEffect(() => {
+    if(localStorage.getItem('result'))
+      setResult(JSON.parse(localStorage.getItem('result')))
+  } , [])
+  useEffect(() => {
+    localStorage.setItem('result' , JSON.stringify(result))
+  } , [result])
+
   return (
     <Store.Provider value={{data , setData , result , setResult , labels , setLabels , section , setSection}}>
       <div className="max-w-screen-xl px-4 mx-auto mb-10">

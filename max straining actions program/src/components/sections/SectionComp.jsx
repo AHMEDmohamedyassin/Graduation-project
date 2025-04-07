@@ -5,10 +5,12 @@ import ISecComp from './ISecComp'
 
 const SectionComp = () => {
   return (
-    <div className='grid lg:grid-cols-3 grid-cols-2 items-start gap-10'>
-        <SectionPropComp/>
-        <ISecComp/>
+    <div className='grid lg:grid-cols-4 grid-cols-1 items-start gap-10'>
         <img src='/ibeam.png'/>
+        <ISecComp/>
+        <div className='lg:col-span-2'>
+          <SectionPropComp/>
+        </div>
     </div>
   )
 }

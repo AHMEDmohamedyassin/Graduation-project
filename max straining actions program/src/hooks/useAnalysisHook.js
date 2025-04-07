@@ -73,9 +73,11 @@ const useAnalysisHook = ({data , labels , result , setResult , setLoading}) => {
 
             // assign data to results object
             setResult(prev => ({...prev , members_critical_loading : {...prev.members_critical_loading ,[frame] : element} }))
-        })
 
-        console.log(result.members_critical_loading)
+        })
+        
+        // console.log(result.members_critical_loading)
+
 
         setLoading(false)
     }
