@@ -2,7 +2,7 @@ import React from 'react'
 import * as XLSX from "xlsx";
 import useStateHook from './useStateHook';
 
-const useHandleFileUpload = ({setData , loading , setLoading}) => {
+const useHandleFileUpload = ({setData , loading , setLoading , setResult}) => {
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
@@ -26,6 +26,8 @@ const useHandleFileUpload = ({setData , loading , setLoading}) => {
         setLoading(false)
 
       };
+
+      setResult({members_critical_loading:{}})
       
       reader.readAsBinaryString(file);
     }

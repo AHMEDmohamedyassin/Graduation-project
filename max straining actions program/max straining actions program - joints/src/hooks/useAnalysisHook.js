@@ -43,7 +43,7 @@ const useAnalysisHook = ({data , labels , result , setResult , setLoading}) => {
 
             let station = row[labels.Station.index]
             let axial = row[labels.P.index]
-            let shear = row[labels.V2.index]
+            let shear = row[labels.V2.index] 
             let moment = row[labels.M3.index]
 
             let element = result.members_critical_loading[frame]
@@ -63,12 +63,12 @@ const useAnalysisHook = ({data , labels , result , setResult , setLoading}) => {
             }else { // if element is existed before
 
                 // max moment
-                element = handleMaxMinCalcs(row , element , station , 'max_moment' , true , labels.M3.index)
-                element = handleMaxMinCalcs(row , element , station , 'min_moment' , false , labels.M3.index)
-                element = handleMaxMinCalcs(row , element , station , 'max_shear' , true , labels.V2.index)
-                element = handleMaxMinCalcs(row , element , station , 'min_shear' , false , labels.V2.index)
-                element = handleMaxMinCalcs(row , element , station , 'max_axial' , true , labels.P.index)
-                element = handleMaxMinCalcs(row , element , station , 'min_axial' , false , labels.P.index)
+                element = handleMaxMinCalcs(row , element , station , 'max_moment' , true , [labels.M3.index , labels.M2.index] )
+                element = handleMaxMinCalcs(row , element , station , 'min_moment' , false , [labels.M3.index , labels.M2.index])
+                element = handleMaxMinCalcs(row , element , station , 'max_shear' , true , [labels.V2.index , labels.V3.index])
+                element = handleMaxMinCalcs(row , element , station , 'min_shear' , false , [labels.V2.index , labels.V3.index])
+                element = handleMaxMinCalcs(row , element , station , 'max_axial' , true , [labels.P.index])
+                element = handleMaxMinCalcs(row , element , station , 'min_axial' , false , [labels.P.index])
             }
 
             // assign data to results object
@@ -89,15 +89,15 @@ const useAnalysisHook = ({data , labels , result , setResult , setLoading}) => {
         setLoading(true)
 
         data.map(row => {
-            let frame = row[labels.Frame.index]
-            if(!parseInt(frame)) return ;
+            let joint = row[labels.Station.index]
+            if(!parseInt(joint)) return ;
 
             let station = row[labels.Station.index]
             let axial = row[labels.P.index]
             let shear = row[labels.V2.index]
             let moment = row[labels.M3.index]
 
-            let element = result.members_critical_loading[frame]
+            let element = result.members_critical_loading[joint]
             
             // if element not existed before
             if(!element){
@@ -110,20 +110,20 @@ const useAnalysisHook = ({data , labels , result , setResult , setLoading}) => {
                     max_axial : {[station] : row} ,
                 }
 
-                result.members_critical_loading[frame] = element
+                result.members_critical_loading[joint] = element
             }else { // if element is existed before
 
                 // max moment
-                element = handleMaxMinCalcs(row , element , station , 'max_moment' , true , labels.M3.index)
-                element = handleMaxMinCalcs(row , element , station , 'min_moment' , false , labels.M3.index)
-                element = handleMaxMinCalcs(row , element , station , 'max_shear' , true , labels.V2.index)
-                element = handleMaxMinCalcs(row , element , station , 'min_shear' , false , labels.V2.index)
-                element = handleMaxMinCalcs(row , element , station , 'max_axial' , true , labels.P.index)
-                element = handleMaxMinCalcs(row , element , station , 'min_axial' , false , labels.P.index)
+                element = handleMaxMinCalcs(row , element , station , 'max_moment' , true , [labels.M3.index , labels.M2.index])
+                element = handleMaxMinCalcs(row , element , station , 'min_moment' , false , [labels.M3.index , labels.M2.index])
+                element = handleMaxMinCalcs(row , element , station , 'max_shear' , true , [labels.V2.index , labels.V3.index])
+                element = handleMaxMinCalcs(row , element , station , 'min_shear' , false , [labels.V2.index , labels.V3.index])
+                element = handleMaxMinCalcs(row , element , station , 'max_axial' , true , [labels.P.index])
+                element = handleMaxMinCalcs(row , element , station , 'min_axial' , false , [labels.P.index])
             }
 
             // assign data to results object
-            setResult(prev => ({...prev , members_critical_loading : {...prev.members_critical_loading ,[frame] : element} }))
+            setResult(prev => ({...prev , members_critical_loading : {...prev.members_critical_loading ,[joint] : element} }))
 
         })
         

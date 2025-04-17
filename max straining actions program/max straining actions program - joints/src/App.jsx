@@ -12,10 +12,10 @@ export const Store = createContext();
 
 function App() {
   const {data , setData , labels , setLabels , result , setResult , section , setSection , loading , setLoading} = useStateHook()
-  const { handleFileUpload } = useHandleFileUpload({setData , loading , setLoading});
+  const { handleFileUpload } = useHandleFileUpload({setData , loading , setLoading , setResult});
   const { handleAnalysisFrames , handleAnalysisJoints } = useAnalysisHook({data , labels , result , setResult , setLoading})
   
-
+console.log('render')
   // initialize data for testing only 
   useEffect(() => {
     handleAnalysisJoints()
@@ -31,6 +31,14 @@ function App() {
   useEffect(() => {
     localStorage.setItem('result' , JSON.stringify(result))
   } , [result])
+
+  useEffect(() => {
+    console.log('*****************************************************')
+    console.log('data' , data)
+    console.log('result' , result)
+    // console.log('section' , section)
+    // console.log('labels' , labels)
+  } , [data , result , labels , section])
 
   return (
     <Store.Provider value={{data , setData , result , setResult , labels , setLabels , section , setSection}}>

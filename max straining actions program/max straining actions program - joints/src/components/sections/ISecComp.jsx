@@ -7,10 +7,14 @@ const ISecComp = () => {
     const {section , setSection} = useContext(Store)
     const {assign_member_data , run_calcs} = ISecHook()
 
+    const handleInputChange = (data) => {
+        setSection(prev => ({...prev , ...data}))
+    }
+
     useEffect(() => {
-        if(section)
+        if(section){
             localStorage.setItem('isection' , JSON.stringify(section))
-        console.log(section);
+        }
     } , [section])
 
     useEffect(() => {
@@ -26,19 +30,19 @@ const ISecComp = () => {
             {/* yield stress */}
             <div class=" w-full col-span-2">
                 <label for="number-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">fy (t/cm2):</label>
-                <input value={section?.fy_unfactored ?? 0} onChange={e => setSection(prev => ({...prev , fy_unfactored : e.target.value , fy : e.target.value * 0.58 }))} type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="90210" required />
+                <input value={section?.fy_unfactored ?? 0} onChange={e => handleInputChange({fy_unfactored : e.target.value , fy : e.target.value * 0.58 } )} type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="90210" required />
             </div>
 
             {/* A1 factor */}
             <div class=" w-full">
                 <label for="number-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">A1 factor:</label>
-                <input value={section?.A1 ?? 1} onChange={e => setSection(prev => ({...prev , A1 : e.target.value }))} type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="90210" required />
+                <input value={section?.A1} onChange={e => handleInputChange({A1 : e.target.value})} type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="90210" required />
             </div>
 
             {/* chooose element type  */}
             <div class="w-full">
               <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">element type</label>
-              <select onChange={e => setSection(prev => ({...prev , type : e.target.value}))} id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <select onChange={e => handleInputChange({ type : e.target.value}) } id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option value={'beam'} selected>beam</option>
                 <option value={'column'}>column</option>
               </select>
@@ -47,11 +51,11 @@ const ISecComp = () => {
             {/* unsupported length */}
             <div class="">
                 <label for="number-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">unsupported length (in plane):</label>
-                <input value={section?.Lx?? 0} onChange={e => setSection(prev => ({...prev , Lx : e.target.value}))} type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="90210" required />
+                <input value={section?.Lx?? 0} onChange={e => handleInputChange({Lx : e.target.value})} type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="90210" required />
             </div>
             <div class="">
                 <label for="number-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">unsupported length (out of plane):</label>
-                <input value={section?.Ly ?? 0} onChange={e => setSection(prev => ({...prev , Ly : e.target.value}))} type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="90210" required />
+                <input value={section?.Ly ?? 0} onChange={e => handleInputChange({Ly : e.target.value})}  type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="90210" required />
             </div>
 
             <div class="">

@@ -236,7 +236,7 @@ const ISecHook = () => {
     } 
 
     // run calculations
-    const run_calcs = () => {
+    async function run_calcs ()  {
         members_location()
         areaCalc()
         CGCalc()
@@ -252,7 +252,6 @@ const ISecHook = () => {
         Bottom_Flange_ltb_calc()
         globalBuckling_calc()
 
-
         console.log('calcs');
         
     }
@@ -260,7 +259,7 @@ const ISecHook = () => {
     // check stresses for top flange
     const top_flange_stresses_calc = (station , member) => {
         let N = result.selected_member[member][station][labels.P.index]
-        let M = result.selected_member[member][station][labels.M3.index]
+        let M = result.selected_member[member][station][labels.M3.index] || result.selected_member[member][station][labels.M2.index]
         
         let Fa = N / section.area         // applied axial stress
         let Fbx = M * (section.members.top_flange.Ly / 2 + section.members.top_flange.yg - section.YG) / section.Ix  // applied bending stress
@@ -274,11 +273,10 @@ const ISecHook = () => {
         
         let combination = 0
         
-        // if(section.type == 'beam')
-        //     // combination = Fa / (Fa < 0 ? section.Fltb_top_flange : section.fy) + Fbx / (Fbx < 0 ? section.Fltb_top_flange : section.fy) 
-        //     combination = Fa / (Fa < 0 ? section.Fball_top_flange : section.fy) + Fbx / (Fbx < 0 ? section.Fball_top_flange : section.fy) 
-        // else
-            combination = Fa / (Fa < 0 ? section.Fcr : section.fy) + (Fbx * (Fbx < 0 ? section.A1 : 1) ) / (Fbx < 0 ? section.Fball_top_flange : fy_bending)
+        const axial = Fa / (Fa < 0 ? section.Fcr : section.fy)
+        const bending = (Fbx * (Fbx < 0 ? section.A1 : 1) ) / (Fbx < 0 ? section.Fball_top_flange : fy_bending)
+        
+        combination = axial + bending
         
 
         return combination;
@@ -287,7 +285,7 @@ const ISecHook = () => {
     // check stresses for bottom flange
     const bottom_flange_stresses_calc = (station , member) => {
         let N = result.selected_member[member][station][labels.P.index]
-        let M = result.selected_member[member][station][labels.M3.index]
+        let M = result.selected_member[member][station][labels.M3.index] || result.selected_member[member][station][labels.M2.index]
         
         let Fa = N / section.area         // applied axial stress
         let Fbx = -M * (section.YG ) / section.Ix  // applied bending stress
@@ -301,12 +299,10 @@ const ISecHook = () => {
 
         let combination = 0
         
-        // if(section.type == 'beam')
-        //     // combination = Fa / (Fa < 0 ? section.Fltb_bottom_flange : section.fy) + Fbx / (Fbx < 0 ? section.Fltb_bottom_flange : section.fy) 
-        //     combination = Fa / (Fa < 0 ? section.Fball_bottom_flange : section.fy) + Fbx / (Fbx < 0 ? section.Fltb_bottom_flange : section.fy) 
-        // else
-            // combination = Fa / (Fa < 0 ? section.Fcr : section.fy) + (Fbx * (Fbx < 0 ? section.A1 : 1) ) / (Fbx < 0 ? section.Fltb_bottom_flange : section.fy)
-            combination = Fa / (Fa < 0 ? section.Fcr : section.fy) + (Fbx * (Fbx < 0 ? section.A1 : 1) ) / (Fbx < 0 ? section.Fball_bottom_flange : fy_bending)
+        const axial = Fa / (Fa < 0 ? section.Fcr : section.fy)
+        const bending = (Fbx * (Fbx < 0 ? section.A1 : 1) ) / (Fbx < 0 ? section.Fball_bottom_flange : fy_bending)
+        
+        combination = axial + bending
 
         return combination;
     }
