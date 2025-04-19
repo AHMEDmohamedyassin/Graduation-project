@@ -18,7 +18,7 @@ function App() {
 console.log('render')
   // initialize data for testing only 
   useEffect(() => {
-    handleAnalysisJoints()
+    handleAnalysisFrames()
   } , [data])
 
   useEffect(() => {
@@ -34,8 +34,8 @@ console.log('render')
 
   useEffect(() => {
     console.log('*****************************************************')
-    console.log('data' , data)
-    console.log('result' , result)
+    // console.log('data' , data)
+    // console.log('result' , result)
     // console.log('section' , section)
     // console.log('labels' , labels)
   } , [data , result , labels , section])

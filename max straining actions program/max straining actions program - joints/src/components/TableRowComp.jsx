@@ -8,7 +8,7 @@ const TableRowComp = ({e}) => {
 
   return (
     <>
-    <div className='w-full text-center font-bold text-2xl my-2 border-y-2 '>{e}</div>
+    <tr className='w-full text-center font-bold text-2xl my-2 border-y-2 '>{e}</tr>
     {
         // loop through stations inside straining action
         result.selected_member && Object.keys(result.selected_member[e])?.map((station , key) => (

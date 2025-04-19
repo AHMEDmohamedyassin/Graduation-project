@@ -1,0 +1,20 @@
+
+
+ SAP2000 v25.3.1 Ultimate 64-bit (Analysis Build 9960/64)                       
+ File: C:\Users\Ahmed\Desktop\...elopment\04-sap model-2\end gable analysis .OUT
+                                                                     
+                                                                       
+
+ D I S P L A C E M E N T   D E G R E E S   O F   F R E E D O M
+
+         (A) = Active DOF, equilibrium equation
+         (-) = Restrained DOF, reaction computed
+         (+) = Constrained DOF
+         (>) = External substructure DOF
+         ( ) = Null DOF
+
+  JOINTS              UX  UY  UZ  RX  RY  RZ
+      14               -   -   -   A   A   A
+      20 TO      28    A   A   A   A   A   A
+      29               -   -   -   A   A   A
+      98 TO     249    A   A   A   A   A   A

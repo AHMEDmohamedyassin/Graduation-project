@@ -63,7 +63,7 @@ const useAnalysisHook = ({data , labels , result , setResult , setLoading}) => {
             }else { // if element is existed before
 
                 // max moment
-                element = handleMaxMinCalcs(row , element , station , 'max_moment' , true , [labels.M3.index , labels.M2.index] )
+                element = handleMaxMinCalcs(row , element , station , 'max_moment' , true , [labels.M3.index , labels.M2.index])
                 element = handleMaxMinCalcs(row , element , station , 'min_moment' , false , [labels.M3.index , labels.M2.index])
                 element = handleMaxMinCalcs(row , element , station , 'max_shear' , true , [labels.V2.index , labels.V3.index])
                 element = handleMaxMinCalcs(row , element , station , 'min_shear' , false , [labels.V2.index , labels.V3.index])

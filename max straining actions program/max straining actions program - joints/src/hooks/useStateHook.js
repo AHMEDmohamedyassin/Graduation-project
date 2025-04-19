@@ -9,7 +9,7 @@ const useStateHook = () => {
       members_critical_loading : {}
     })
 
-    const [labels , setLabels] = useState(JointAnalysisXMLcolumns)
+    const [labels , setLabels] = useState(FrameAnalysisXMLcolumns)
 
     const [section , setSection] = useState()
 
