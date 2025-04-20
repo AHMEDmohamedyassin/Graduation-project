@@ -7,11 +7,13 @@ import useStateHook from "./hooks/useStateHook";
 import useAnalysisHook from "./hooks/useAnalysisHook";
 import TableComp from "./components/TableComp";
 import SectionComp from "./components/sections/SectionComp";
+import AngleSectionComp from "./components/angles/SectionComp";
+import SectionTypeSelectionComp from "./components/SectionTypeSelectionComp";
 
 export const Store = createContext();
 
 function App() {
-  const {data , setData , labels , setLabels , result , setResult , section , setSection , loading , setLoading} = useStateHook()
+  const {data , setData , labels , setLabels , result , setResult , section , setSection , loading , setLoading , sectionType , setSectionType} = useStateHook()
   const { handleFileUpload } = useHandleFileUpload({setData , loading , setLoading , setResult});
   const { handleAnalysisFrames , handleAnalysisJoints } = useAnalysisHook({data , labels , result , setResult , setLoading})
   
@@ -41,8 +43,11 @@ console.log('render')
   } , [data , result , labels , section])
 
   return (
-    <Store.Provider value={{data , setData , result , setResult , labels , setLabels , section , setSection}}>
+    <Store.Provider value={{data , setData , result , setResult , labels , setLabels , section , setSection , sectionType , setSectionType}}>
       <div className="max-w-screen-xl px-4 mx-auto mb-10">
+
+        {/* choose section type */}
+        <SectionTypeSelectionComp/>
 
         <div className="my-10">
           {
@@ -66,8 +71,23 @@ console.log('render')
         <TableComp/>
 
         <TabsComp/>
+
+        {/* choose section type */}
+        <SectionTypeSelectionComp/>
         
-        <SectionComp/>
+        {/* i section comp  */}
+        {
+          sectionType == 'isection' ? 
+            <SectionComp/>
+          :null
+        }
+
+        {/* angles comp */}
+        {
+          sectionType == 'angles' ? 
+            <AngleSectionComp/>
+          :null
+        }
 
       </div>
     </Store.Provider>
