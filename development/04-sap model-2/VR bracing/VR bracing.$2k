@@ -16,8 +16,10 @@ TABLE:  "CASE - STATIC 1 - LOAD ASSIGNMENTS"
    Case=DEAD   LoadType="Load pattern"   LoadName=DEAD   LoadSF=1
  
 TABLE:  "CONNECTIVITY - FRAME"
+   Frame=1   JointI=15   JointJ=17   IsCurved=No   GUID=ad988bab-81e6-4703-bdcd-87352d4b5536
    Frame=2   JointI=3   JointJ=4   IsCurved=No   GUID=cf77b13b-24e4-4199-8b62-d8299b755968
    Frame=3   JointI=5   JointJ=6   IsCurved=No   GUID=22180b96-541a-46c1-b27b-0956a3e45ecf
+   Frame=4   JointI=17   JointJ=19   IsCurved=No   GUID=1f976b8d-2342-47ff-923f-3d61d736af59
    Frame=5   JointI=1   JointJ=3   IsCurved=No   GUID=ea636e25-85a0-43bd-9633-0ceee60db11a
    Frame=6   JointI=2   JointJ=4   IsCurved=No   GUID=7e567703-9a81-41fc-9e5a-c6cd8947e449
    Frame=7   JointI=3   JointJ=5   IsCurved=No   GUID=c0e93d44-50f8-4990-9722-db06b05b3aa2
@@ -25,6 +27,7 @@ TABLE:  "CONNECTIVITY - FRAME"
    Frame=9   JointI=5   JointJ=7   IsCurved=No   GUID=40c6d961-fa2c-414c-aa36-8dd9d9eaeacb
    Frame=10   JointI=6   JointJ=8   IsCurved=No   GUID=d31ee60a-4c76-45fe-974c-89f57ec037cb
    Frame=11   JointI=9   JointJ=10   IsCurved=No   GUID=9a6b4ae3-bfd7-404e-a1c7-ca9da9547271
+   Frame=12   JointI=19   JointJ=21   IsCurved=No   GUID=1ba25c5d-386d-4d00-a329-c18825a9ff12
    Frame=13   JointI=9   JointJ=11   IsCurved=No   GUID=4f90ed2a-d364-4414-afe8-a70e3678831d
    Frame=14   JointI=10   JointJ=12   IsCurved=No   GUID=73d743ca-ed2a-4c63-bba1-0cdf0f58fec2
    Frame=15   JointI=1   JointJ=4   IsCurved=No   GUID=d276cc7a-cbd4-4c50-b898-3a14712b5605
@@ -39,14 +42,11 @@ TABLE:  "CONNECTIVITY - FRAME"
    Frame=24   JointI=14   JointJ=12   IsCurved=No   GUID=5769610e-195a-4117-b55c-73ca5e0aa63c
    Frame=25   JointI=9   JointJ=14   IsCurved=No   GUID=7622b05b-7cef-46d1-9290-6b5062fb91ff
    Frame=26   JointI=14   JointJ=10   IsCurved=No   GUID=b8673a42-b721-4035-98b6-96013e57a544
+   Frame=27   JointI=22   JointJ=20   IsCurved=No   GUID=18798d2c-a1d0-4cee-8ab4-27f190752125
    Frame=28   JointI=17   JointJ=18   IsCurved=No   GUID=e99ab432-87b7-4804-80a3-197031e3c6d4
    Frame=29   JointI=19   JointJ=20   IsCurved=No   GUID=3aa0968d-d9d5-4ae2-81ea-8ba9c9c35989
-   Frame=31   JointI=15   JointJ=17   IsCurved=No   GUID=0d7706e4-4793-4d96-9557-94f5ed6f7b4a
-   Frame=32   JointI=16   JointJ=18   IsCurved=No   GUID=4c4cab6f-bc5d-4240-8b45-fba341663f53
-   Frame=33   JointI=17   JointJ=19   IsCurved=No   GUID=9957a16f-4d78-4c3e-9ed1-fe356c7da3ea
-   Frame=34   JointI=18   JointJ=20   IsCurved=No   GUID=81a791ba-25bd-496c-9795-8b054e22a387
-   Frame=35   JointI=19   JointJ=21   IsCurved=No   GUID=f442e588-087b-448f-9140-f4b486cc77af
-   Frame=36   JointI=20   JointJ=22   IsCurved=No   GUID=a65c572d-8f4e-4322-b7a7-534bf3a302d8
+   Frame=30   JointI=20   JointJ=18   IsCurved=No   GUID=0a649581-4034-4a9d-914b-e310e4006938
+   Frame=31   JointI=18   JointJ=16   IsCurved=No   GUID=399ba398-bac7-46c8-b238-dbcd474c2bfb
    Frame=37   JointI=15   JointJ=18   IsCurved=No   GUID=3164110c-386c-43f9-83f6-cf802dbe298e
    Frame=38   JointI=18   JointJ=19   IsCurved=No   GUID=f4e89c93-3453-4c0b-909c-5aba90eca378
    Frame=39   JointI=20   JointJ=17   IsCurved=No   GUID=6cfc6e5a-acc2-4f4c-b9f4-5c27c10862da
@@ -65,8 +65,10 @@ TABLE:  "DATABASE FORMAT TYPES"
    UnitsCurr=Yes   OverrideE=No
  
 TABLE:  "FRAME AUTO MESH ASSIGNMENTS"
+   Frame=1   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
    Frame=2   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
    Frame=3   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
+   Frame=4   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
    Frame=5   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
    Frame=6   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
    Frame=7   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
@@ -74,6 +76,7 @@ TABLE:  "FRAME AUTO MESH ASSIGNMENTS"
    Frame=9   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
    Frame=10   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
    Frame=11   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
+   Frame=12   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
    Frame=13   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
    Frame=14   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
    Frame=15   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
@@ -88,14 +91,11 @@ TABLE:  "FRAME AUTO MESH ASSIGNMENTS"
    Frame=24   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
    Frame=25   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
    Frame=26   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
+   Frame=27   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
    Frame=28   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
    Frame=29   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
+   Frame=30   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
    Frame=31   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
-   Frame=32   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
-   Frame=33   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
-   Frame=34   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
-   Frame=35   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
-   Frame=36   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
    Frame=37   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
    Frame=38   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
    Frame=39   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
@@ -106,8 +106,10 @@ TABLE:  "FRAME AUTO MESH ASSIGNMENTS"
    Frame=44   AutoMesh=Yes   AtJoints=Yes   AtFrames=No   NumSegments=0   MaxLength=0   MaxDegrees=0
  
 TABLE:  "FRAME DESIGN PROCEDURES"
+   Frame=1   DesignProc="From Material"
    Frame=2   DesignProc="From Material"
    Frame=3   DesignProc="From Material"
+   Frame=4   DesignProc="From Material"
    Frame=5   DesignProc="From Material"
    Frame=6   DesignProc="From Material"
    Frame=7   DesignProc="From Material"
@@ -115,6 +117,7 @@ TABLE:  "FRAME DESIGN PROCEDURES"
    Frame=9   DesignProc="From Material"
    Frame=10   DesignProc="From Material"
    Frame=11   DesignProc="From Material"
+   Frame=12   DesignProc="From Material"
    Frame=13   DesignProc="From Material"
    Frame=14   DesignProc="From Material"
    Frame=15   DesignProc="From Material"
@@ -129,14 +132,11 @@ TABLE:  "FRAME DESIGN PROCEDURES"
    Frame=24   DesignProc="From Material"
    Frame=25   DesignProc="From Material"
    Frame=26   DesignProc="From Material"
+   Frame=27   DesignProc="From Material"
    Frame=28   DesignProc="From Material"
    Frame=29   DesignProc="From Material"
+   Frame=30   DesignProc="From Material"
    Frame=31   DesignProc="From Material"
-   Frame=32   DesignProc="From Material"
-   Frame=33   DesignProc="From Material"
-   Frame=34   DesignProc="From Material"
-   Frame=35   DesignProc="From Material"
-   Frame=36   DesignProc="From Material"
    Frame=37   DesignProc="From Material"
    Frame=38   DesignProc="From Material"
    Frame=39   DesignProc="From Material"
@@ -147,8 +147,10 @@ TABLE:  "FRAME DESIGN PROCEDURES"
    Frame=44   DesignProc="From Material"
  
 TABLE:  "FRAME LOAD TRANSFER OPTIONS"
+   Frame=1   Transfer=Yes
    Frame=2   Transfer=Yes
    Frame=3   Transfer=Yes
+   Frame=4   Transfer=Yes
    Frame=5   Transfer=Yes
    Frame=6   Transfer=Yes
    Frame=7   Transfer=Yes
@@ -156,6 +158,7 @@ TABLE:  "FRAME LOAD TRANSFER OPTIONS"
    Frame=9   Transfer=Yes
    Frame=10   Transfer=Yes
    Frame=11   Transfer=Yes
+   Frame=12   Transfer=Yes
    Frame=13   Transfer=Yes
    Frame=14   Transfer=Yes
    Frame=15   Transfer=Yes
@@ -170,14 +173,11 @@ TABLE:  "FRAME LOAD TRANSFER OPTIONS"
    Frame=24   Transfer=Yes
    Frame=25   Transfer=Yes
    Frame=26   Transfer=Yes
+   Frame=27   Transfer=Yes
    Frame=28   Transfer=Yes
    Frame=29   Transfer=Yes
+   Frame=30   Transfer=Yes
    Frame=31   Transfer=Yes
-   Frame=32   Transfer=Yes
-   Frame=33   Transfer=Yes
-   Frame=34   Transfer=Yes
-   Frame=35   Transfer=Yes
-   Frame=36   Transfer=Yes
    Frame=37   Transfer=Yes
    Frame=38   Transfer=Yes
    Frame=39   Transfer=Yes
@@ -188,8 +188,10 @@ TABLE:  "FRAME LOAD TRANSFER OPTIONS"
    Frame=44   Transfer=Yes
  
 TABLE:  "FRAME OUTPUT STATION ASSIGNMENTS"
+   Frame=1   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
    Frame=2   StationType=MaxStaSpcg   MaxStaSpcg=24   AddAtElmInt=Yes   AddAtPtLoad=Yes
    Frame=3   StationType=MaxStaSpcg   MaxStaSpcg=24   AddAtElmInt=Yes   AddAtPtLoad=Yes
+   Frame=4   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
    Frame=5   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
    Frame=6   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
    Frame=7   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
@@ -197,6 +199,7 @@ TABLE:  "FRAME OUTPUT STATION ASSIGNMENTS"
    Frame=9   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
    Frame=10   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
    Frame=11   StationType=MaxStaSpcg   MaxStaSpcg=24   AddAtElmInt=Yes   AddAtPtLoad=Yes
+   Frame=12   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
    Frame=13   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
    Frame=14   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
    Frame=15   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
@@ -211,14 +214,11 @@ TABLE:  "FRAME OUTPUT STATION ASSIGNMENTS"
    Frame=24   StationType=MaxStaSpcg   MaxStaSpcg=24   AddAtElmInt=Yes   AddAtPtLoad=Yes
    Frame=25   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
    Frame=26   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
+   Frame=27   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
    Frame=28   StationType=MaxStaSpcg   MaxStaSpcg=24   AddAtElmInt=Yes   AddAtPtLoad=Yes
    Frame=29   StationType=MaxStaSpcg   MaxStaSpcg=24   AddAtElmInt=Yes   AddAtPtLoad=Yes
+   Frame=30   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
    Frame=31   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
-   Frame=32   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
-   Frame=33   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
-   Frame=34   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
-   Frame=35   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
-   Frame=36   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
    Frame=37   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
    Frame=38   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
    Frame=39   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
@@ -229,8 +229,10 @@ TABLE:  "FRAME OUTPUT STATION ASSIGNMENTS"
    Frame=44   StationType=MinNumSta   MinNumSta=3   AddAtElmInt=Yes   AddAtPtLoad=Yes
  
 TABLE:  "FRAME RELEASE ASSIGNMENTS 1 - GENERAL"
+   Frame=1   PI=No   V2I=No   V3I=No   TI=Yes   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
    Frame=2   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
    Frame=3   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
+   Frame=4   PI=No   V2I=No   V3I=No   TI=Yes   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
    Frame=5   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
    Frame=6   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
    Frame=7   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
@@ -238,6 +240,7 @@ TABLE:  "FRAME RELEASE ASSIGNMENTS 1 - GENERAL"
    Frame=9   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
    Frame=10   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
    Frame=11   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
+   Frame=12   PI=No   V2I=No   V3I=No   TI=Yes   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
    Frame=13   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
    Frame=14   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
    Frame=15   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
@@ -252,14 +255,11 @@ TABLE:  "FRAME RELEASE ASSIGNMENTS 1 - GENERAL"
    Frame=24   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
    Frame=25   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
    Frame=26   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
+   Frame=27   PI=No   V2I=No   V3I=No   TI=Yes   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
    Frame=28   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
    Frame=29   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
-   Frame=31   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
-   Frame=32   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
-   Frame=33   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
-   Frame=34   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
-   Frame=35   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
-   Frame=36   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
+   Frame=30   PI=No   V2I=No   V3I=No   TI=Yes   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
+   Frame=31   PI=No   V2I=No   V3I=No   TI=Yes   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
    Frame=37   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
    Frame=38   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
    Frame=39   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
@@ -270,8 +270,10 @@ TABLE:  "FRAME RELEASE ASSIGNMENTS 1 - GENERAL"
    Frame=44   PI=No   V2I=No   V3I=No   TI=No   M2I=Yes   M3I=Yes   PJ=No   V2J=No   V3J=No   TJ=No   M2J=Yes   M3J=Yes
  
 TABLE:  "FRAME SECTION ASSIGNMENTS"
+   Frame=1   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
    Frame=2   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
    Frame=3   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
+   Frame=4   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
    Frame=5   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
    Frame=6   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
    Frame=7   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
@@ -279,6 +281,7 @@ TABLE:  "FRAME SECTION ASSIGNMENTS"
    Frame=9   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
    Frame=10   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
    Frame=11   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
+   Frame=12   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
    Frame=13   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
    Frame=14   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
    Frame=15   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
@@ -293,14 +296,11 @@ TABLE:  "FRAME SECTION ASSIGNMENTS"
    Frame=24   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
    Frame=25   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
    Frame=26   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
+   Frame=27   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
    Frame=28   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
    Frame=29   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
+   Frame=30   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
    Frame=31   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=32   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=33   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=34   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=35   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
-   Frame=36   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
    Frame=37   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
    Frame=38   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
    Frame=39   AutoSelect=N.A.   AnalSect=FSEC1   MatProp=Default
@@ -420,10 +420,12 @@ TABLE:  "MASS SOURCE"
  
 TABLE:  "MATERIAL PROPERTIES 01 - GENERAL"
    Material=4000Psi   Type=Concrete   Grade="f'c 4000 psi"   SymType=Isotropic   TempDepend=No   Color=Yellow   GUID=cb87226b-0038-4918-ae20-d91760174d06   Notes="Customary f'c 4000 psi 4/21/2025 5:39:26 AM"
+   Material=A416Gr270   Type=Tendon   Grade="Grade 270"   SymType=Uniaxial   TempDepend=No   Color=Magenta   GUID=040189d1-3659-47c0-af8b-0b9d4a24c9d7   Notes="ASTM A416 Grade 270 4/21/2025 6:05:56 PM"
    Material=A992Fy50   Type=Steel   Grade="Grade 50"   SymType=Isotropic   TempDepend=No   Color=Magenta   GUID=2ac162fa-a4f0-40e4-982b-806efa20c732   Notes="ASTM A992 Grade 50 4/21/2025 5:39:26 AM"
  
 TABLE:  "MATERIAL PROPERTIES 02 - BASIC MECHANICAL PROPERTIES"
    Material=4000Psi   UnitWeight=8.680555556E-05   UnitMass=2.248332521E-07   E1=3604.9965   G12=1502.081875   U12=0.2   A1=5.5E-06
+   Material=A416Gr270   UnitWeight=0.000283564814814815   UnitMass=7.34455290352564E-07   E1=28500   A1=6.5E-06
    Material=A992Fy50   UnitWeight=0.000283564814814815   UnitMass=7.34455290352564E-07   E1=29000   G12=11153.8461538462   U12=0.3   A1=6.5E-06
  
 TABLE:  "MATERIAL PROPERTIES 03A - STEEL DATA"
@@ -432,15 +434,21 @@ TABLE:  "MATERIAL PROPERTIES 03A - STEEL DATA"
 TABLE:  "MATERIAL PROPERTIES 03B - CONCRETE DATA"
    Material=4000Psi   Fc=4   eFc=4   LtWtConc=No   SSCurveOpt=Mander   SSHysType=Takeda   SFc=0.00221914   SCap=0.005   FinalSlope=-0.1   FAngle=0   DAngle=0   CoupModType="Modified Darwin-Pecknold"
  
+TABLE:  "MATERIAL PROPERTIES 03F - TENDON DATA"
+   Material=A416Gr270   Fy=245.1   Fu=270   SSCurveOpt="270 ksi"   SSHysType=Kinematic   FinalSlope=-0.1   CoupModType="Von Mises"
+ 
 TABLE:  "MATERIAL PROPERTIES 03J - COUPLED NONLINEAR VON MISES DATA"
+   Material=A416Gr270   YieldStress=245.1   LinIsoHard=No   LinKinHard=No   NLIsoSaHard=No
    Material=A992Fy50   YieldStress=55   LinIsoHard=No   LinKinHard=No   NLIsoSaHard=No
  
 TABLE:  "MATERIAL PROPERTIES 06 - DAMPING PARAMETERS"
    Material=4000Psi   ModalRatio=0   VisMass=0   VisStiff=0   HysMass=0   HysStiff=0
+   Material=A416Gr270   ModalRatio=0   VisMass=0   VisStiff=0   HysMass=0   HysStiff=0
    Material=A992Fy50   ModalRatio=0   VisMass=0   VisStiff=0   HysMass=0   HysStiff=0
  
 TABLE:  "MATERIAL PROPERTIES 09 - ACCEPTANCE CRITERIA"
    Material=4000Psi   IOTens=0.01   LSTens=0.02   CPTens=0.05   IOComp=-0.003   LSComp=-0.006   CPComp=-0.015   IgnoreTens=Yes
+   Material=A416Gr270   IOTens=0.015   LSTens=0.023   CPTens=0.03   IOComp=-0.015   LSComp=-0.023   CPComp=-0.03
    Material=A992Fy50   IOTens=0.01   LSTens=0.02   CPTens=0.05   IOComp=-0.005   LSComp=-0.01   CPComp=-0.02
  
 TABLE:  "OPTIONS - COLORS - DISPLAY"
@@ -542,5 +550,8 @@ TABLE:  "REBAR SIZES"
    RebarID=N28   Area=0.954801976680756   Diameter=1.1023622751236
    RebarID=N32   Area=1.24620258808136   Diameter=1.25984251499176
    RebarID=N36   Area=1.58100318908691   Diameter=1.41732287406921
+ 
+TABLE:  "SOLID PROPERTY DEFINITIONS"
+   SolidProp=Solid1   Material=4000Psi   MatAngleA=0   MatAngleB=0   MatAngleC=0   InComp=Yes   Color=Yellow   GUID=c039f4fc-44ae-4caa-867d-17e2b1145dc6
  
 END TABLE DATA
