@@ -1,7 +1,7 @@
 
 
  SAP2000 v25.3.1 Ultimate 64-bit (Analysis Build 9960/64)                       
- File: C:\Users\Ahmed\Desktop\...t\development\03-sap model\main frame model.OUT
+ File: C:\Users\Ahmed\Desktop\...2\main frame analysis\main frame analysis 2.OUT
                                                                      
                                                                        
 
@@ -25,6 +25,4 @@
      123 TO       4    -   -   -   A   A   A
        5               A   A   A   A   A   A
        9               -   -   -   A   A   A
-      98 TO     155    A   A   A   A   A   A
-      13               A   A   A            
-       1 TO     271    A   A   A   A   A   A
+      98 TO      34    A   A   A   A   A   A
