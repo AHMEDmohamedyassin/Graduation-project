@@ -1,0 +1,54 @@
+{							
+    "Frame" : {
+    "title" : "Frame" , 
+    "index" : 0
+  },
+  "Station" : {
+    "title" : "Joint" , 
+    "index" : 1
+  },
+  "OutputCase" : {
+    "title" : "OutputCase" , 
+    "index" : 2
+  },
+  "CaseType" : {
+    "title" : "CaseType" , 
+    "index" : 3
+  },
+  "StepType" : {
+    "title" : "StepType" , 
+    "index" : 4
+  },
+  "P" : {
+    "title" : "F1" , 
+    "index" : 5
+  },
+  "V2" : {
+    "title" : "F2" , 
+    "index" : 6
+  },
+  "V3" : {
+    "title" : "F3" , 
+    "index" : 7
+  },
+  "T" : {
+    "title" : "M1" , 
+    "index" : 8
+  },
+  "M3" : {
+    "title" : "M2" , 
+    "index" : 9
+  },
+  "M2" : {
+    "title" : "M3" , 
+    "index" : 10
+  },
+  "FrameElem" : {
+    "title" : "FrameElem" , 
+    "index" : 11
+  },
+  "ElemStation" : {
+    "title" :  "ElemStation" , 
+    "index" : 12
+  }
+}
