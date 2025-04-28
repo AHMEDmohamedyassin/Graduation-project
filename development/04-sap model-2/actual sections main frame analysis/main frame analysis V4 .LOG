@@ -1,12 +1,12 @@
 
 
  SAP2000 v25.3.1 Ultimate 64-bit (Analysis Build 9960/64)
- File: C:\Users\Ahmed\Desktop\...main frame analysis\main frame analysis V4 .LOG
+ File: C:\Users\ahmed\Desktop\...main frame analysis\main frame analysis V4 .LOG
 
 
 
 
- B E G I N   A N A L Y S I S                                2025/04/27  22:44:49
+ B E G I N   A N A L Y S I S                                2025/04/28  10:22:18
 
 
  RUNNING ANALYSIS WITHIN THE GUI PROCESS
@@ -23,24 +23,24 @@
  UNITS (FORCE, LENGTH, TEMPERATURE, TIME)  = kip, in, °F, sec
  GRAVITATIONAL ACCELERATION                =  386.088583
 
- ADDRESSABLE PHYSICAL MEMORY (RAM)         =      15.927 GB
+ ADDRESSABLE PHYSICAL MEMORY (RAM)         =       7.741 GB
 
  PARALLELIZATION OF ANALYSIS OPERATIONS:
   (Env. variable SAPFIRE_NUM_THREADS not set)
- NUMBER OF THREADS: STATE (AUTOMATIC)      =           6
- NUMBER OF THREADS: STIFFNESS (AUTOMATIC)  =           6
- NUMBER OF THREADS: EVENT (AUTOMATIC)      =           6
- NUMBER OF THREADS: MOVE (AUTOMATIC)       =           6
- NUMBER OF THREADS: RESPONSE (AUTOMATIC)   =           6
- NUMBER OF THREADS: SOLVE (AUTOMATIC)      =           6
- NUMBER OF THREADS: FORM (AUTOMATIC)       =           6
+ NUMBER OF THREADS: STATE (AUTOMATIC)      =           4
+ NUMBER OF THREADS: STIFFNESS (AUTOMATIC)  =           4
+ NUMBER OF THREADS: EVENT (AUTOMATIC)      =           4
+ NUMBER OF THREADS: MOVE (AUTOMATIC)       =           4
+ NUMBER OF THREADS: RESPONSE (AUTOMATIC)   =           4
+ NUMBER OF THREADS: SOLVE (AUTOMATIC)      =           4
+ NUMBER OF THREADS: FORM (AUTOMATIC)       =           4
 
 
- E L E M E N T   F O R M A T I O N                                      22:44:49
+ E L E M E N T   F O R M A T I O N                                      10:22:18
 
 
 
- L I N E A R   E Q U A T I O N   S O L U T I O N                        22:44:49
+ L I N E A R   E Q U A T I O N   S O L U T I O N                        10:22:18
 
  FORMING STIFFNESS AT ZERO (UNSTRESSED) INITIAL CONDITIONS
 
@@ -83,7 +83,7 @@
 
 
 
- L I N E A R   S T A T I C   C A S E S                                  22:44:49
+ L I N E A R   S T A T I C   C A S E S                                  10:22:18
 
  USING STIFFNESS AT ZERO (UNSTRESSED) INITIAL CONDITIONS
 
@@ -112,4 +112,4 @@
  CASE: WF
 
 
- A N A L Y S I S   C O M P L E T E                          2025/04/27  22:44:49
+ A N A L Y S I S   C O M P L E T E                          2025/04/28  10:22:18
