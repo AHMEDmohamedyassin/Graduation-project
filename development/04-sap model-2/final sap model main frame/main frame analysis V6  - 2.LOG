@@ -1,12 +1,12 @@
 
 
  SAP2000 v25.3.1 Ultimate 64-bit (Analysis Build 9960/64)
- File: C:\Users\ahmed\Desktop\...ap model main frame\main frame analysis V6 .LOG
+ File: C:\Users\ahmed\Desktop\...odel main frame\main frame analysis V6  - 2.LOG
 
 
 
 
- B E G I N   A N A L Y S I S                                2025/04/30  12:23:08
+ B E G I N   A N A L Y S I S                                2025/05/01  17:48:28
 
 
  RUNNING ANALYSIS WITHIN THE GUI PROCESS
@@ -36,11 +36,11 @@
  NUMBER OF THREADS: FORM (AUTOMATIC)       =           4
 
 
- E L E M E N T   F O R M A T I O N                                      12:23:08
+ E L E M E N T   F O R M A T I O N                                      17:48:28
 
 
 
- L I N E A R   E Q U A T I O N   S O L U T I O N                        12:23:08
+ L I N E A R   E Q U A T I O N   S O L U T I O N                        17:48:28
 
  FORMING STIFFNESS AT ZERO (UNSTRESSED) INITIAL CONDITIONS
 
@@ -83,7 +83,7 @@
 
 
 
- L I N E A R   S T A T I C   C A S E S                                  12:23:08
+ L I N E A R   S T A T I C   C A S E S                                  17:48:28
 
  USING STIFFNESS AT ZERO (UNSTRESSED) INITIAL CONDITIONS
 
@@ -112,4 +112,4 @@
  CASE: WF
 
 
- A N A L Y S I S   C O M P L E T E                          2025/04/30  12:23:08
+ A N A L Y S I S   C O M P L E T E                          2025/05/01  17:48:28
