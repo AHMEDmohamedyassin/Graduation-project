@@ -1,12 +1,12 @@
 
 
  SAP2000 v25.3.1 Ultimate 64-bit (Analysis Build 9960/64)
- File: C:\Users\ahmed\Desktop\...sap model main frame\main frame analysis V7.LOG
+ File: C:\Users\Ahmed\Desktop\...sap model main frame\main frame analysis V7.LOG
 
 
 
 
- B E G I N   A N A L Y S I S                                2025/05/03  11:59:50
+ B E G I N   A N A L Y S I S                                2025/05/05  09:34:50
 
 
  RUNNING ANALYSIS WITHIN THE GUI PROCESS
@@ -23,29 +23,29 @@
  UNITS (FORCE, LENGTH, TEMPERATURE, TIME)  = kip, in, °F, sec
  GRAVITATIONAL ACCELERATION                =  386.088583
 
- ADDRESSABLE PHYSICAL MEMORY (RAM)         =       7.741 GB
+ ADDRESSABLE PHYSICAL MEMORY (RAM)         =      15.927 GB
 
  PARALLELIZATION OF ANALYSIS OPERATIONS:
   (Env. variable SAPFIRE_NUM_THREADS not set)
- NUMBER OF THREADS: STATE (AUTOMATIC)      =           4
- NUMBER OF THREADS: STIFFNESS (AUTOMATIC)  =           4
- NUMBER OF THREADS: EVENT (AUTOMATIC)      =           4
- NUMBER OF THREADS: MOVE (AUTOMATIC)       =           4
- NUMBER OF THREADS: RESPONSE (AUTOMATIC)   =           4
- NUMBER OF THREADS: SOLVE (AUTOMATIC)      =           4
- NUMBER OF THREADS: FORM (AUTOMATIC)       =           4
+ NUMBER OF THREADS: STATE (AUTOMATIC)      =           6
+ NUMBER OF THREADS: STIFFNESS (AUTOMATIC)  =           6
+ NUMBER OF THREADS: EVENT (AUTOMATIC)      =           6
+ NUMBER OF THREADS: MOVE (AUTOMATIC)       =           6
+ NUMBER OF THREADS: RESPONSE (AUTOMATIC)   =           6
+ NUMBER OF THREADS: SOLVE (AUTOMATIC)      =           6
+ NUMBER OF THREADS: FORM (AUTOMATIC)       =           6
 
 
- E L E M E N T   F O R M A T I O N                                      11:59:50
+ E L E M E N T   F O R M A T I O N                                      09:34:50
 
 
 
- L I N E A R   E Q U A T I O N   S O L U T I O N                        11:59:50
+ L I N E A R   E Q U A T I O N   S O L U T I O N                        09:34:50
 
  FORMING STIFFNESS AT ZERO (UNSTRESSED) INITIAL CONDITIONS
 
- TOTAL NUMBER OF EQUILIBRIUM EQUATIONS     =         981
- NUMBER OF NON-ZERO STIFFNESS TERMS        =       10818
+ TOTAL NUMBER OF EQUILIBRIUM EQUATIONS     =         978
+ NUMBER OF NON-ZERO STIFFNESS TERMS        =       10794
 
  * * * W A R N I N G * * *
  THE STRUCTURE IS UNSTABLE OR ILL-CONDITIONED !!
@@ -73,7 +73,7 @@
  ---------------------------------
 
 
- L I N E A R   S T A T I C   C A S E S                                  11:59:50
+ L I N E A R   S T A T I C   C A S E S                                  09:34:50
 
  USING STIFFNESS AT ZERO (UNSTRESSED) INITIAL CONDITIONS
 
@@ -102,4 +102,4 @@
  CASE: WF
 
 
- A N A L Y S I S   C O M P L E T E                          2025/05/03  11:59:50
+ A N A L Y S I S   C O M P L E T E                          2025/05/05  09:34:50
