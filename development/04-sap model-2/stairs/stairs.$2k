@@ -284,10 +284,12 @@ TABLE:  "MASS SOURCE"
  
 TABLE:  "MATERIAL PROPERTIES 01 - GENERAL"
    Material=4000Psi   Type=Concrete   Grade="f'c 4000 psi"   SymType=Isotropic   TempDepend=No   Color=Yellow   GUID=fe437ce6-eb84-4331-8b1d-0e0bde0ec73f   Notes="Customary f'c 4000 psi 6/11/2025 7:05:57 AM"
+   Material=A416Gr270   Type=Tendon   Grade="Grade 270"   SymType=Uniaxial   TempDepend=No   Color=Magenta   GUID=c9e1b975-cc8e-4226-91e0-43d7bc986d56   Notes="ASTM A416 Grade 270 6/11/2025 5:32:47 PM"
    Material=A992Fy50   Type=Steel   Grade="Grade 50"   SymType=Isotropic   TempDepend=No   Color=Magenta   GUID=a3305de6-14ea-4252-9b81-982051c773e2   Notes="ASTM A992 Grade 50 6/11/2025 7:05:57 AM"
  
 TABLE:  "MATERIAL PROPERTIES 02 - BASIC MECHANICAL PROPERTIES"
    Material=4000Psi   UnitWeight=8.680555556E-05   UnitMass=2.248332521E-07   E1=3604.9965   G12=1502.081875   U12=0.2   A1=5.5E-06
+   Material=A416Gr270   UnitWeight=0.000283564814814815   UnitMass=7.34455290352564E-07   E1=28500   A1=6.5E-06
    Material=A992Fy50   UnitWeight=0.000283564814814815   UnitMass=7.34455290352564E-07   E1=29000   G12=11153.8461538462   U12=0.3   A1=6.5E-06
  
 TABLE:  "MATERIAL PROPERTIES 03A - STEEL DATA"
@@ -296,15 +298,21 @@ TABLE:  "MATERIAL PROPERTIES 03A - STEEL DATA"
 TABLE:  "MATERIAL PROPERTIES 03B - CONCRETE DATA"
    Material=4000Psi   Fc=4   eFc=4   LtWtConc=No   SSCurveOpt=Mander   SSHysType=Takeda   SFc=0.00221914   SCap=0.005   FinalSlope=-0.1   FAngle=0   DAngle=0   CoupModType="Modified Darwin-Pecknold"
  
+TABLE:  "MATERIAL PROPERTIES 03F - TENDON DATA"
+   Material=A416Gr270   Fy=245.1   Fu=270   SSCurveOpt="270 ksi"   SSHysType=Kinematic   FinalSlope=-0.1   CoupModType="Von Mises"
+ 
 TABLE:  "MATERIAL PROPERTIES 03J - COUPLED NONLINEAR VON MISES DATA"
+   Material=A416Gr270   YieldStress=245.1   LinIsoHard=No   LinKinHard=No   NLIsoSaHard=No
    Material=A992Fy50   YieldStress=55   LinIsoHard=No   LinKinHard=No   NLIsoSaHard=No
  
 TABLE:  "MATERIAL PROPERTIES 06 - DAMPING PARAMETERS"
    Material=4000Psi   ModalRatio=0   VisMass=0   VisStiff=0   HysMass=0   HysStiff=0
+   Material=A416Gr270   ModalRatio=0   VisMass=0   VisStiff=0   HysMass=0   HysStiff=0
    Material=A992Fy50   ModalRatio=0   VisMass=0   VisStiff=0   HysMass=0   HysStiff=0
  
 TABLE:  "MATERIAL PROPERTIES 09 - ACCEPTANCE CRITERIA"
    Material=4000Psi   IOTens=0.01   LSTens=0.02   CPTens=0.05   IOComp=-0.003   LSComp=-0.006   CPComp=-0.015   IgnoreTens=Yes
+   Material=A416Gr270   IOTens=0.015   LSTens=0.023   CPTens=0.03   IOComp=-0.015   LSComp=-0.023   CPComp=-0.03
    Material=A992Fy50   IOTens=0.01   LSTens=0.02   CPTens=0.05   IOComp=-0.005   LSComp=-0.01   CPComp=-0.02
  
 TABLE:  "OPTIONS - COLORS - DISPLAY"
@@ -406,5 +414,8 @@ TABLE:  "REBAR SIZES"
    RebarID=N28   Area=0.954801976680756   Diameter=1.1023622751236
    RebarID=N32   Area=1.24620258808136   Diameter=1.25984251499176
    RebarID=N36   Area=1.58100318908691   Diameter=1.41732287406921
+ 
+TABLE:  "SOLID PROPERTY DEFINITIONS"
+   SolidProp=Solid1   Material=4000Psi   MatAngleA=0   MatAngleB=0   MatAngleC=0   InComp=Yes   Color=Yellow   GUID=6688f036-c0a3-41be-89f2-ebb7fd2cbc84
  
 END TABLE DATA
