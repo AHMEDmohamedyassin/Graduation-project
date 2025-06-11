@@ -1,0 +1,28 @@
+
+
+ SAP2000 v25.3.1 Ultimate 64-bit (Analysis Build 9960/64)                       
+ File: C:\Users\Ahmed\Desktop\...ct\development\04-sap model-2\stairs\stairs.OUT
+                                                                     
+                                                                       
+
+ D I S P L A C E M E N T   D E G R E E S   O F   F R E E D O M
+
+         (A) = Active DOF, equilibrium equation
+         (-) = Restrained DOF, reaction computed
+         (+) = Constrained DOF
+         (>) = External substructure DOF
+         ( ) = Null DOF
+
+  JOINTS              UX  UY  UZ  RX  RY  RZ
+       1               A   A   -   A   A   A
+       2 TO       3    A   A   A   A   A   A
+       4 TO       5    -   -   -   A   A   A
+       6 TO       7    A   A   A   A   A   A
+       8 TO      16    A   A   -   A   A   A
+      17 TO      18    A   A   A   A   A   A
+      19 TO      20    -   -   -   A   A   A
+      21 TO      22    A   A   A   A   A   A
+      23               A   A   -   A   A   A
+      24               -   -   -   A   A   A
+      25 TO      27    A   A   A   A   A   A
+      28               A   A   -   A   A   A
