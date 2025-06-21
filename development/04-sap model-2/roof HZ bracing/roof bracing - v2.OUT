@@ -1,0 +1,31 @@
+
+
+ SAP2000 v25.3.1 Ultimate 64-bit (Analysis Build 9960/64)                       
+ File: C:\Users\Ahmed\Desktop\...p model-2\roof HZ bracing\roof bracing - v2.OUT
+                                                                     
+                                                                       
+
+ D I S P L A C E M E N T   D E G R E E S   O F   F R E E D O M
+
+         (A) = Active DOF, equilibrium equation
+         (-) = Restrained DOF, reaction computed
+         (+) = Constrained DOF
+         (>) = External substructure DOF
+         ( ) = Null DOF
+
+  JOINTS              UX  UY  UZ  RX  RY  RZ
+     121 TO     122    A   -   -            
+     123 TO     132    A   A   A            
+     133 TO     134    A   -   -            
+     135 TO     152    A   A   A            
+     153 TO     154    A   -   -            
+     155 TO     164    A   A   A            
+     165 TO     168    A   -   -            
+     169 TO     178    A   A   A            
+     179 TO     180    A   -   -            
+     181 TO     198    A   A   A            
+     199 TO     200    A   -   -            
+     201 TO     210    A   A   A            
+     211 TO     214    A   -   -            
+     215 TO     232    A   A   A            
+     233 TO     234    A   -   -            
